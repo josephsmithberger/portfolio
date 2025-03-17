@@ -1,0 +1,40 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "slug": "first-post",
+      "title": "First post!",
+      "date": "March 17, 2025",
+      "thumbnail": "/blog/assets/first-post-thumb.jpg",
+      "excerpt": "hi! I decided to add a blog to my site just for fun! this first post is just to check if everything is working.",
+      "tags": ["personal", "announcement"]
+    },
+    {
+      "id": 2,
+      "slug": "welcome-to-my-blog",
+      "title": "Welcome to My Blog!",
+      "date": "June 10, 2024",
+      "thumbnail": "/blog/assets/welcome-thumb.jpg",
+      "excerpt": "My first blog post! Learn about why I started this blog and what I'll be sharing.",
+      "tags": ["personal", "introduction"]
+    },
+    {
+      "id": 3,
+      "slug": "mind-garden-devlog-1",
+      "title": "Mind Garden Devlog #1",
+      "date": "June 15, 2024",
+      "thumbnail": "/blog/assets/devlog1-thumb.jpg",
+      "excerpt": "Behind the scenes of creating Mind Garden - art process, design decisions, and progress so far.",
+      "tags": ["gamedev", "Mind Garden", "devlog"]
+    },
+    {
+      "id": 4,
+      "slug": "godot-engine-tips",
+      "title": "5 Godot Engine Tips for Beginners",
+      "date": "June 22, 2024",
+      "thumbnail": "/blog/assets/godot-tips-thumb.jpg",
+      "excerpt": "Useful tips I've learned while developing games with the Godot Engine.",
+      "tags": ["gamedev", "tutorial", "Godot"]
+    }
+  ]
+}

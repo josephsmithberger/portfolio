@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Joseph Smithberger</title>
+    <meta name="description" content="Read Joseph Smithberger's blog about game development, Mind Garden, and other creative adventures.">
+    
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles - Link to main stylesheet -->
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">joseph~</a>
+            <ul class="nav-links">
+                <li><a href="/">home</a></li>
+                <li><a href="/#about">about</a></li>
+                <li><a href="/#projects">projects</a></li>
+                <li><a href="/blog" class="active">blog</a></li>
+                <li><a href="/#socials">socials</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Decorative Elements -->
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    
+    <svg class="scribble scribble-1" width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30,75 Q45,30 75,50 T120,80 Q140,100 120,120 T60,130 Q30,120 30,75" stroke="#4a6741" stroke-width="3" fill="none" />
+    </svg>
+    
+    <svg class="scribble scribble-2" width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20,60 Q40,20 60,40 T100,60 Q110,80 90,100 T40,90 Q20,70 20,60" stroke="#4a6741" stroke-width="3" fill="none" />
+    </svg>
+    
+    <!-- Blog Index Content -->
+    <main class="blog-list-page">
+        <div class="container">
+            <h1>my blog</h1>
+            <p>Random thoughts, game development updates, and creative adventures</p>
+            
+            <div id="blogFilters" class="blog-filters">
+                <div class="filter-label">filter by:</div>
+                <div id="tagFilters" class="tag-filters">
+                    <!-- Tag filters will be generated here -->
+                </div>
+            </div>
+            
+            <div id="blogListContainer" class="blog-list-container">
+                <!-- Blog posts will be loaded here -->
+                <div class="loading-posts">loading blog posts...</div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-text">
+                <p>Thanks for reading!</p>
+                <p class="copyright">© 2024 Joseph Smithberger</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Hide mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Blog listing functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const blogListContainer = document.getElementById('blogListContainer');
+            const tagFiltersContainer = document.getElementById('tagFilters');
+            let allPosts = [];
+            let activeTag = null;
+            
+            // Function to generate a random rotation between -2 and 2 degrees
+            function getRandomRotation() {
+                return (Math.random() * 4 - 2).toFixed(2) + 'deg';
+            }
+            
+            // Function to fetch blog posts
+            async function fetchBlogPosts() {
+                try {
+                    const response = await fetch('/blog/blog-data.json');
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch blog posts');
+                    }
+                    
+                    const data = await response.json();
+                    return data.posts;
+                } catch (error) {
+                    console.error('Error fetching blog posts:', error);
+                    return [];
+                }
+            }
+            
+            // Function to create blog post card
+            function createBlogPostCard(post) {
+                const rotation = getRandomRotation();
+                
+                const card = document.createElement('div');
+                card.className = 'blog-card';
+                card.style.setProperty('--random-rotation', rotation);
+                card.dataset.tags = post.tags.join(',');
+                
+                const content = `
+                    <div class="blog-image-container">
+                        <img src="${post.thumbnail}" alt="${post.title}" class="blog-image">
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">${post.title}</h3>
+                        <div class="blog-date">${post.date}</div>
+                        <p class="blog-excerpt">${post.excerpt}</p>
+                        <a href="/blog/posts/${post.slug}.html" class="blog-link">read more</a>
+                    </div>
+                `;
+                
+                card.innerHTML = content;
+                return card;
+            }
+            
+            // Initialize tag filters
+            function initTagFilters(posts) {
+                // Collect all unique tags
+                const allTags = new Set();
+                posts.forEach(post => {
+                    if (post.tags && Array.isArray(post.tags)) {
+                        post.tags.forEach(tag => allTags.add(tag));
+                    }
+                });
+                
+                // Create "All" filter
+                const allFilter = document.createElement('div');
+                allFilter.className = 'tag-filter active';
+                allFilter.textContent = 'all';
+                allFilter.dataset.tag = 'all';
+                tagFiltersContainer.appendChild(allFilter);
+                
+                // Create filters for each tag
+                allTags.forEach(tag => {
+                    const filter = document.createElement('div');
+                    filter.className = 'tag-filter';
+                    filter.textContent = tag;
+                    filter.dataset.tag = tag;
+                    tagFiltersContainer.appendChild(filter);
+                });
+                
+                // Add click events to filters
+                document.querySelectorAll('.tag-filter').forEach(filter => {
+                    filter.addEventListener('click', () => {
+                        // Remove active class from all filters
+                        document.querySelectorAll('.tag-filter').forEach(f => {
+                            f.classList.remove('active');
+                        });
+                        
+                        // Add active class to clicked filter
+                        filter.classList.add('active');
+                        
+                        // Filter posts
+                        const tag = filter.dataset.tag;
+                        filterPostsByTag(tag);
+                    });
+                });
+            }
+            
+            // Filter posts by tag
+            function filterPostsByTag(tag) {
+                activeTag = tag;
+                
+                // Get all post cards
+                const cards = document.querySelectorAll('.blog-card');
+                
+                if (tag === 'all') {
+                    // Show all posts
+                    cards.forEach(card => {
+                        card.style.display = 'flex';
+                    });
+                } else {
+                    // Show only posts with the selected tag
+                    cards.forEach(card => {
+                        const tags = card.dataset.tags.split(',');
+                        if (tags.includes(tag)) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                }
+            }
+            
+            // Load blog posts
+            async function loadBlogPosts() {
+                const posts = await fetchBlogPosts();
+                allPosts = posts;
+                
+                if (posts.length === 0) {
+                    blogListContainer.innerHTML = '<p class="loading-posts">No posts found</p>';
+                    return;
+                }
+                
+                // Clear loading message
+                blogListContainer.innerHTML = '';
+                
+                // Sort posts by date (newest first)
+                posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                
+                // Add all posts to the container
+                posts.forEach(post => {
+                    const card = createBlogPostCard(post);
+                    blogListContainer.appendChild(card);
+                });
+                
+                // Initialize tag filters
+                initTagFilters(posts);
+            }
+            
+            // Load the posts
+            loadBlogPosts();
+        });
+    </script>
+    
+    <style>
+        /* Additional styles specific to the blog list page */
+        .blog-list-page {
+            padding-top: 6rem;
+            padding-bottom: 4rem;
+        }
+        
+        .blog-filters {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+            gap: 1rem;
+        }
+        
+        .filter-label {
+            font-size: 1.4rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .tag-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        
+        .tag-filter {
+            background-color: rgba(255, 255, 255, 0.6);
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            border: 1px dashed var(--secondary);
+            transition: all 0.3s ease;
+        }
+        
+        .tag-filter:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+        }
+        
+        .tag-filter.active {
+            background-color: var(--primary);
+            color: white;
+            border: 1px solid var(--primary);
+        }
+        
+        @media (max-width: 768px) {
+            .blog-filters {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .tag-filters {
+                margin-left: 0;
+            }
+        }
+    </style>
+</body>
+</html>

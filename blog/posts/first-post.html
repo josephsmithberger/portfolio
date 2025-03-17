@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First post! | Joseph Smithberger</title>
+    <meta name="description" content="My first blog post to test the new blog section on my website!">
+    
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles - Link to main stylesheet -->
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">joseph~</a>
+            <ul class="nav-links">
+                <li><a href="/">home</a></li>
+                <li><a href="/#about">about</a></li>
+                <li><a href="/#projects">projects</a></li>
+                <li><a href="/blog">blog</a></li>
+                <li><a href="/#socials">socials</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Decorative Elements -->
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    
+    <svg class="scribble scribble-1" width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30,75 Q45,30 75,50 T120,80 Q140,100 120,120 T60,130 Q30,120 30,75" stroke="#4a6741" stroke-width="3" fill="none" />
+    </svg>
+    
+    <svg class="scribble scribble-2" width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20,60 Q40,20 60,40 T100,60 Q110,80 90,100 T40,90 Q20,70 20,60" stroke="#4a6741" stroke-width="3" fill="none" />
+    </svg>
+    
+    <!-- Blog Post Content -->
+    <main class="blog-post-container">
+        <header class="blog-post-header">
+            <a href="/blog" class="blog-link"><i class="fas fa-arrow-left"></i> back to all posts</a>
+            <h1>First post!</h1>
+            <div class="blog-post-meta">
+                <span class="blog-date">June 24, 2024</span> • 
+                <span class="blog-tags">personal, announcement</span>
+            </div>
+        </header>
+        
+        <article class="blog-post-content">
+            <p>
+                hi! I decided to add a blog to my site just for fun! this first post is just to check if everything is working.
+            </p>
+            
+            <p>
+                later, though, you can expect devlogs, announcements, and behind the scenes!
+            </p>
+            
+            <p>
+                ttyl!
+            </p>
+            
+            <p style="margin-top: 2rem;">
+                - joseph
+            </p>
+        </article>
+        
+        <div class="blog-nav">
+            <a href="#" class="blog-nav-link prev-post" id="prevPostLink">« previous post</a>
+            <a href="/blog" class="blog-nav-link">all posts</a>
+            <a href="#" class="blog-nav-link next-post" id="nextPostLink">next post »</a>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-text">
+                <p>Thanks for reading!</p>
+                <p class="copyright">© 2024 Joseph Smithberger</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Hide mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Blog navigation for previous/next post
+        async function loadBlogNavigation() {
+            try {
+                const response = await fetch('/blog/blog-data.json');
+                if (!response.ok) throw new Error('Failed to fetch blog data');
+                
+                const data = await response.json();
+                const posts = data.posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                
+                // Get current post slug from URL
+                const currentPath = window.location.pathname;
+                const currentSlug = currentPath.split('/').pop().replace('.html', '');
+                
+                // Find current post index
+                const currentIndex = posts.findIndex(post => post.slug === currentSlug);
+                
+                if (currentIndex !== -1) {
+                    const prevPostLink = document.getElementById('prevPostLink');
+                    const nextPostLink = document.getElementById('nextPostLink');
+                    
+                    // Set up previous post link
+                    if (currentIndex < posts.length - 1) {
+                        const prevPost = posts[currentIndex + 1];
+                        prevPostLink.href = `/blog/posts/${prevPost.slug}.html`;
+                        prevPostLink.title = prevPost.title;
+                    } else {
+                        prevPostLink.style.visibility = 'hidden';
+                    }
+                    
+                    // Set up next post link
+                    if (currentIndex > 0) {
+                        const nextPost = posts[currentIndex - 1];
+                        nextPostLink.href = `/blog/posts/${nextPost.slug}.html`;
+                        nextPostLink.title = nextPost.title;
+                    } else {
+                        nextPostLink.style.visibility = 'hidden';
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading blog navigation:', error);
+                // Hide navigation if error
+                document.querySelectorAll('.prev-post, .next-post').forEach(link => {
+                    link.style.visibility = 'hidden';
+                });
+            }
+        }
+        
+        // Load blog navigation
+        loadBlogNavigation();
+    </script>
+</body>
+</html>
