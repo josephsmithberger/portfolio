@@ -1,0 +1,13 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "slug": "first-post",
+      "title": "First post!",
+      "date": "March 17, 2025",
+      "thumbnail": "/blog/assets/first-post-thumb.jpg",
+      "excerpt": "hi! I decided to add a blog to my site just for fun! this first post is just to check if everything is working.",
+      "tags": ["personal", "announcement"]
+    }
+  ]
+}

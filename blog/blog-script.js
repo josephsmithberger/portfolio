@@ -1,4 +1,4 @@
-// Blog System JavaScript
+// Blog System JavaScript for Homepage
 document.addEventListener('DOMContentLoaded', function() {
     // Only run this code if the blog container exists
     const blogContainer = document.getElementById('blogPostsContainer');
@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to fetch blog posts
     async function fetchBlogPosts() {
         try {
+            // Updated path to blog-data.json
             const response = await fetch('/blog/blog-data.json');
             if (!response.ok) {
                 throw new Error('Failed to fetch blog posts');
