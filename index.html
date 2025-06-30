@@ -9,921 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Base Styles */
-        :root {
-            --background: #f5f0e8; /* Light brown */
-            --primary: #4a6741; /* Forest green */
-            --secondary: #7a9e6b; /* Lighter green */
-            --accent: #8d6e63; /* Warm brown */
-            --text: #3c3c3c;
-            --light-text: #f5f5f5;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Reenie Beanie', cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--background);
-            color: var(--text);
-            line-height: 1.6;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%234a6741' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-            font-size: 1.8rem;
-        }
-        
-        /* Scrollbar styling */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: var(--background);
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: var(--secondary);
-            border-radius: 5px;
-        }
-        
-        /* Typography */
-        h1, h2, h3, h4 {
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--primary);
-            font-family: 'Reenie Beanie', cursive;
-        }
-        
-        h1 {
-            font-size: 4.5rem;
-            margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
-        }
-        
-        h2 {
-            font-size: 2.5rem;
-            position: relative;
-            display: inline-block;
-            text-transform: lowercase;
-            transform: rotate(-1deg);
-        }
-        
-        h2:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -10px;
-            width: 100%;
-            height: 4px;
-            background: var(--secondary);
-            border-radius: 3px;
-            transform: rotate(1deg);
-        }
-        
-        p {
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-        }
-        
-        a {
-            color: var(--primary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-        
-        a:hover {
-            color: var(--secondary);
-            transform: scale(1.05);
-        }
-        
-        /* Layout */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        section {
-            padding: 4rem 0;
-            position: relative;
-        }
-        
-        /* Navigation */
-        nav {
-            background-color: rgba(245, 240, 232, 0.7);
-            backdrop-filter: blur(5px);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 0.5rem;
-            border-bottom: 3px solid var(--primary);
-            transform: rotate(-0.5deg);
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 2rem;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            transform: rotate(1deg);
-            display: inline-block;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
-        }
-        
-        .nav-links li {
-            transform: rotate(var(--rotation));
-        }
-        
-        .nav-links li:nth-child(1) { --rotation: -1deg; }
-        .nav-links li:nth-child(2) { --rotation: 1deg; }
-        .nav-links li:nth-child(3) { --rotation: -0.5deg; }
-        .nav-links li:nth-child(4) { --rotation: 1.5deg; }
-        .nav-links li:nth-child(5) { --rotation: -1.2deg; }
-        
-        .nav-links a {
-            font-weight: 600;
-            font-size: 1.5rem;
-            padding: 0.5rem 1rem;
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 12px;
-            border: 1px dashed var(--primary);
-            display: inline-block;
-        }
-        
-        .nav-links a:hover {
-            background-color: rgba(255, 255, 255, 0.8);
-            box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
-        }
-        
-        .mobile-menu {
-            display: none;
-            cursor: pointer;
-        }
-        
-        .bar {
-            width: 25px;
-            height: 3px;
-            background-color: var(--primary);
-            margin: 5px 0;
-            transition: all 0.3s ease;
-        }
-        
-        /* Hero Section */
-        #hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            padding-top: 5rem;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            background-color: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(5px);
-            padding: 2rem;
-            border-radius: 25px;
-            box-shadow: 5px 5px 0 rgba(0,0,0,0.1);
-            border: 2px dashed var(--secondary);
-            transform: rotate(-1deg);
-            max-width: 600px;
-        }
-        
-        .hero-title {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-        
-        .hero-description {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 30px;
-            text-transform: lowercase;
-            font-weight: 700;
-            font-size: 1.3rem;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            margin-right: 1rem;
-            margin-bottom: 1rem;
-            border: none;
-            transform: rotate(var(--rotation));
-            box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
-        }
-        
-        .btn:nth-of-type(1) { --rotation: -1deg; }
-        .btn:nth-of-type(2) { --rotation: 1deg; }
-        
-        .btn:hover {
-            background-color: var(--secondary);
-            transform: translateY(-3px) rotate(var(--rotation));
-            box-shadow: 5px 5px 0 rgba(0,0,0,0.2);
-            color: white;
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .hero-image {
-            position: absolute;
-            right: 5%;
-            top: 50%;
-            transform: translateY(-50%) rotate(2deg);
-            width: 40%;
-            max-width: 500px;
-            border-radius: 20px;
-            box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
-            z-index: 1;
-            border: 3px solid white;
-        }
-        
-        /* Decorative Elements */
-        .doodle {
-            position: absolute;
-            z-index: 0;
-            pointer-events: none;
-        }
-        
-        .cloud {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            height: 100px;
-            width: 300px;
-            box-shadow: 10px 10px rgba(0, 0, 0, 0.05);
-            animation: float 10s infinite ease-in-out;
-        }
-        
-        .cloud:before, .cloud:after {
-            content: '';
-            position: absolute;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-        }
-        
-        .cloud:before {
-            width: 180px;
-            height: 180px;
-            top: -70px;
-            left: 50px;
-        }
-        
-        .cloud:after {
-            width: 120px;
-            height: 120px;
-            top: -40px;
-            left: 150px;
-        }
-        
-        .cloud-1 {
-            top: 10%;
-            left: 10%;
-            transform: scale(0.5);
-            opacity: 0.7;
-        }
-        
-        .cloud-2 {
-            top: 30%;
-            right: 5%;
-            transform: scale(0.3);
-            opacity: 0.5;
-        }
-        
-        .scribble {
-            position: absolute;
-            z-index: 0;
-            opacity: 0.1;
-            pointer-events: none;
-        }
-        
-        .scribble-1 {
-            top: 20%;
-            left: 15%;
-            transform: rotate(10deg);
-        }
-        
-        .scribble-2 {
-            bottom: 15%;
-            right: 10%;
-            transform: rotate(-15deg);
-        }
-        
-        /* About Section */
-        #about {
-            position: relative;
-        }
-        
-        .glass-panel {
-            background-color: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            box-shadow: 5px 5px 0 rgba(0,0,0,0.1);
-            padding: 3rem;
-            margin: 0 2rem;
-            border: 2px dashed var(--secondary);
-            transform: rotate(-0.5deg);
-        }
-        
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-        
-        .about-image {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
-            border: 3px solid white;
-            transform: rotate(1deg);
-        }
-        
-        .skill-tag {
-            display: inline-block;
-            background-color: rgba(122, 158, 107, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 15px;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            font-size: 1.3rem;
-            border: 1px dashed var(--primary);
-            transform: rotate(var(--rotation));
-        }
-        
-        .skill-tag:nth-child(1) { --rotation: -1deg; }
-        .skill-tag:nth-child(2) { --rotation: 1deg; }
-        .skill-tag:nth-child(3) { --rotation: -0.5deg; }
-        .skill-tag:nth-child(4) { --rotation: 0.8deg; }
-        .skill-tag:nth-child(5) { --rotation: -0.7deg; }
-        
-        /* Projects Section */
-        #projects {
-            position: relative;
-        }
-        
-        .project-card {
-            background-color: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(5px);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 8px 8px 0 rgba(0,0,0,0.1);
-            margin-bottom: 3rem;
-            border: 2px dashed var(--accent);
-            transform: rotate(var(--rotation));
-            transition: all 0.3s ease;
-        }
-        
-        .project-card .project-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .project-card:nth-child(1) { --rotation: -1deg; }
-        .project-card:nth-child(2) { --rotation: 1deg; }
-        .project-card:nth-child(3) { --rotation: -0.5deg; }
-        
-        .project-card:hover {
-            transform: translateY(-5px) rotate(var(--rotation));
-            box-shadow: 10px 10px 0 rgba(0,0,0,0.15);
-        }
-        
-        .project-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-bottom: 3px solid var(--secondary);
-        }
-        
-        .project-content {
-            padding: 2rem;
-        }
-        
-        .project-title {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        
-        .featured-badge {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            margin-bottom: 1rem;
-            transform: rotate(-2deg);
-        }
-        
-        .project-link {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.5rem 1rem;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 20px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .project-link:hover {
-            background-color: var(--secondary);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
-        }
-        
-        /* Gallery Section */
-        #gallery {
-            position: relative;
-        }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .gallery-item {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 5px 5px 0 rgba(0,0,0,0.1);
-            transform: rotate(var(--rotation));
-            transition: all 0.3s ease;
-            border: 3px solid white;
-        }
-        
-        .gallery-item:nth-child(1) { --rotation: -1.5deg; }
-        .gallery-item:nth-child(2) { --rotation: 1deg; }
-        .gallery-item:nth-child(3) { --rotation: -0.5deg; }
-        .gallery-item:nth-child(4) { --rotation: 1.2deg; }
-        .gallery-item:nth-child(5) { --rotation: -0.8deg; }
-        .gallery-item:nth-child(6) { --rotation: 0.7deg; }
-        
-        .gallery-item:hover {
-            transform: translateY(-5px) rotate(var(--rotation));
-            box-shadow: 8px 8px 0 rgba(0,0,0,0.15);
-        }
-        
-        .gallery-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            display: block;
-            transition: all 0.3s ease;
-        }
-        
-        /* Blog Section Styles */
-        #blog {
-            position: relative;
-            padding-bottom: 6rem;
-        }
-
-        .blog-scroll-container {
-            position: relative;
-            overflow: hidden;
-            padding: 1rem 0;
-            margin: 2rem 0;
-        }
-
-        .blog-posts-wrapper {
-            display: flex;
-            gap: 2rem;
-            overflow-x: auto;
-            padding: 1rem;
-            padding-bottom: 2rem;
-            scrollbar-width: none; /* For Firefox */
-            -ms-overflow-style: none; /* For Internet Explorer and Edge */
-            scroll-behavior: smooth;
-        }
-
-        .blog-posts-wrapper::-webkit-scrollbar {
-            display: none; /* For Chrome, Safari, and Opera */
-        }
-
-        .blog-card {
-            flex: 0 0 300px;
-            background-color: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(5px);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 5px 5px 0 rgba(0,0,0,0.1);
-            border: 2px dashed var(--secondary);
-            transform: rotate(var(--random-rotation));
-            transition: all 0.3s ease;
-            min-height: 320px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px) rotate(var(--random-rotation));
-            box-shadow: 8px 8px 0 rgba(0,0,0,0.15);
-        }
-
-        .blog-image-container {
-            height: 160px;
-            overflow: hidden;
-            border-bottom: 2px dashed var(--secondary);
-        }
-
-        .blog-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .blog-content {
-            padding: 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .blog-title {
-            font-size: 1.6rem;
-            margin-bottom: 0.5rem;
-            line-height: 1.2;
-        }
-
-        .blog-date {
-            color: var(--accent);
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .blog-excerpt {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            flex-grow: 1;
-        }
-
-        .blog-link {
-            align-self: flex-start;
-            padding: 0.5rem 1rem;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 15px;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-
-        .blog-link:hover {
-            background-color: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
-            color: white;
-        }
-
-        .loading-posts {
-            width: 100%;
-            text-align: center;
-            padding: 2rem;
-            font-size: 1.5rem;
-            color: var(--accent);
-        }
-
-        .scroll-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0.7;
-            transition: all 0.3s ease;
-            z-index: 10;
-            box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
-        }
-
-        .scroll-arrow:hover {
-            opacity: 1;
-            box-shadow: 5px 5px 0 rgba(0,0,0,0.2);
-        }
-
-        .scroll-left {
-            left: 10px;
-        }
-
-        .scroll-right {
-            right: 10px;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-        
-        /* Socials Section */
-        #socials {
-            position: relative;
-        }
-        
-        .social-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-        
-        .social-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(5px);
-            border-radius: 20px;
-            padding: 1.5rem;
-            box-shadow: 5px 5px 0 rgba(0,0,0,0.1);
-            border: 2px dashed var(--secondary);
-            transform: rotate(var(--rotation));
-            transition: all 0.3s ease;
-            width: 200px;
-        }
-        
-        .social-card:nth-child(1) { --rotation: -1.5deg; }
-        .social-card:nth-child(2) { --rotation: 1deg; }
-        .social-card:nth-child(3) { --rotation: -0.5deg; }
-        
-        .social-card:hover {
-            transform: translateY(-5px) rotate(var(--rotation));
-            box-shadow: 8px 8px 0 rgba(0,0,0,0.15);
-        }
-        
-        .social-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        
-        .social-name {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .social-username {
-            color: var(--secondary);
-            margin-bottom: 1rem;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--primary);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            margin-top: 3rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--accent), var(--secondary), var(--accent));
-        }
-        
-        .footer-text {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .copyright {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-top: 1rem;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            h1 {
-                font-size: 3rem;
-            }
-            
-            .hero-title {
-                font-size: 3rem;
-            }
-            
-            .hero-image {
-                width: 50%;
-                opacity: 0.7;
-            }
-            
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .scroll-arrow {
-                width: 40px;
-                height: 40px;
-            }
-            
-            .blog-card {
-                flex: 0 0 250px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            h2 {
-                font-size: 2rem;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-image {
-                position: fixed;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                opacity: 0.15;
-                top: 0;
-                right: 0;
-                transform: none;
-                border: none;
-                box-shadow: none;
-                border-radius: 0;
-                z-index: -1;
-            }
-            
-            .nav-links {
-                position: fixed;
-                background-color: rgba(245, 240, 232, 0.95);
-                top: 70px;
-                left: 0;
-                width: 100%;
-                height: 0;
-                overflow: hidden;
-                flex-direction: column;
-                align-items: center;
-                transition: all 0.5s ease;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-                padding: 0;
-                z-index: 1000;
-            }
-            
-            .nav-links.active {
-                height: auto;
-                padding: 2rem 0;
-            }
-            
-            .nav-links li {
-                margin: 1rem 0;
-                transform: none !important;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            .mobile-menu.active .bar:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 6px);
-            }
-            
-            .mobile-menu.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-            
-            .mobile-menu.active .bar:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -6px);
-            }
-            
-            .glass-panel {
-                padding: 2rem;
-                margin: 0 1rem;
-            }
-            
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .social-links {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .social-card {
-                width: 90%;
-                max-width: 300px;
-            }
-            
-            .blog-card {
-                flex: 0 0 220px;
-            }
-        }
-        
-        /* Animations */
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-        
-        .float {
-            animation: float 8s ease-in-out infinite;
-        }
-        
-        @keyframes rotate {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-        
-        .rotate {
-            animation: rotate 20s linear infinite;
-        }
-        
-        @keyframes marquee {
-            0% {
-                transform: translateX(100%);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-        
-        .marquee {
-            white-space: nowrap;
-            overflow: hidden;
-            display: inline-block;
-            animation: marquee 15s linear infinite;
-        }
-        
-        /* Custom Cursor */
-        .custom-cursor {
-            display: none !important;
-        }
-    </style>
-</head>
+    <link rel="stylesheet" href="styles.css"> </head>
 <body>
-    <!-- Custom Cursor -->
     <div class="custom-cursor"></div>
-    
-    <!-- Navigation -->
+
     <nav id="navbar">
         <div class="nav-container">
             <div class="logo">joseph~</div>
@@ -933,6 +22,7 @@
                 <li><a href="#projects">projects</a></li>
                 <li><a href="/blog">blog</a></li>
                 <li><a href="#socials">socials</a></li>
+                <li><a href="#contact">contact</a></li>
             </ul>
             <div class="mobile-menu">
                 <div class="bar"></div>
@@ -941,20 +31,10 @@
             </div>
         </div>
     </nav>
-    
-    <!-- Decorative Elements -->
+
     <div class="cloud cloud-1"></div>
     <div class="cloud cloud-2"></div>
-    
-    <svg class="scribble scribble-1" width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
-        <path d="M30,75 Q45,30 75,50 T120,80 Q140,100 120,120 T60,130 Q30,120 30,75" stroke="#4a6741" stroke-width="3" fill="none" />
-    </svg>
-    
-    <svg class="scribble scribble-2" width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20,60 Q40,20 60,40 T100,60 Q110,80 90,100 T40,90 Q20,70 20,60" stroke="#4a6741" stroke-width="3" fill="none" />
-    </svg>
-    
-    <!-- Hero Section -->
+
     <section id="hero">
         <div class="container">
             <div class="hero-content">
@@ -966,39 +46,36 @@
         </div>
         <img src="hero.png" alt="Mind Garden Game Screenshot" class="hero-image">
     </section>
-    
-    <!-- About Section -->
+
     <section id="about">
-        <div class="glass-panel">
+        <div class="container">
             <h2>about me</h2>
-            <div class="about-grid">
-                <div>
-                    <p>Hey! I'm Joseph, a highschool sophomore game developer! I'm from Maryland and I'm working on "Mind Garden," my hand-drawn story game! </p>
-                    
-                    <p>When I'm not coding or drawing, I'm exploring national parks with my dog or working on my YouTube channel where I talk about games like Animal Crossing and Zelda.</p>
-                    
-                    <p>Currently a student at Calvert Hall College High School (class of 2027!) with a 4.0 weighted GPA.</p>
-                    
-                    <div class="skills">
-                        <span class="skill-tag">Godot Engine</span>
-                        <span class="skill-tag">GDScript</span>
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">Game Design</span>
-                        <span class="skill-tag">Animation</span>
+            <div class="glass-panel">
+                <div class="about-grid">
+                    <div>
+                        <p>Hey! I'm Joseph, a highschool sophomore game developer! I'm from Maryland and I'm working on "Mind Garden," my hand-drawn story game! </p>
+                        <p>When I'm not coding or drawing, I'm often exploring national parks with my dog, or diving into games like Animal Crossing and Zelda.</p>
+                        <p>Currently a student at Calvert Hall College High School (class of 2027!) with a 4.0 weighted GPA.</p>
+                        <div class="skills">
+                            <span class="skill-tag">Godot Engine</span>
+                            <span class="skill-tag">GDScript</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Game Design</span>
+                            <span class="skill-tag">Animation</span>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <img src="ew.png" alt="Joseph Smithberger" class="about-image">
+                    <div>
+                        <img src="ew.png" alt="Joseph Smithberger" class="about-image">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Projects Section -->
+
     <section id="projects">
         <div class="container">
             <h2>my projects</h2>
-            
+
             <div class="project-card">
                 <img src="mindgarden.png" alt="Mind Garden Game" class="project-image">
                 <div class="project-content">
@@ -1011,70 +88,46 @@
                     <a href="https://store.steampowered.com/app/3045100/Mind_Garden/" class="project-link" target="_blank">check it out on steam</a>
                 </div>
             </div>
-            
-            <div class="project-card">
-                <img src="kintsugi.png" alt="Kintsugi Game" class="project-image">
-                <div class="project-content">
-                    <h3 class="project-title">Kintsugi</h3>
-                    <p>A 3D narrative game created during the Wholesome Games Game Jam 2024 in just 48 hours! I was the lead programmer and designer, working with two teammates.</p>
-                    <a href="https://woafie.itch.io/kintsugi" class="project-link">more info</a>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <img src="ytchannel.jpg" alt="YouTube Channel" class="project-image">
-                <div class="project-content">
-                    <h3 class="project-title">YouTube Channel</h3>
-                    <p>Gaming content focused on titles like Animal Crossing: New Horizons and The Legend of Zelda: Tears of the Kingdom. Reached 500+ subscribers within a year!</p>
-                    <a href="https://www.youtube.com/@woafie" class="project-link">check out my videos</a>
-                </div>
-            </div>
+
+            <a href="gamejam.html" class="btn project-link" style="display:block;max-width:300px;margin:32px auto 0 auto;text-align:center;">see my game jam games</a>
         </div>
     </section>
-    
-    <!-- Gallery Section -->
+
     <section id="gallery">
         <div class="container">
             <h2>gallery</h2>
             <p>Some snapshots from my adventures with my dog, national parks visits, and behind-the-scenes of game development!</p>
-            
+
             <div class="gallery-grid">
                 <div class="gallery-item">
                     <img src="yosemite.jpg" alt="I love National Parks and Nature" class="gallery-image">
                 </div>
-                
                 <div class="gallery-item">
                     <img src="meywinnie.jpg" alt="Me and my Dog" class="gallery-image">
                 </div>
-                
                 <div class="gallery-item">
                     <img src="devsnap.jpg" alt="Game Development" class="gallery-image">
                 </div>
-                
                 <div class="gallery-item">
                     <img src="winnie.jpg" alt="MY BABY!" class="gallery-image">
                 </div>
-                
                 <div class="gallery-item">
                     <img src="sketch.jpg" alt="Scan from my game!" class="gallery-image">
                 </div>
-                
                 <div class="gallery-item">
                     <img src="carmel.jpg" alt="Siblings" class="gallery-image">
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Blog Section -->
+
     <section id="blog">
         <div class="container">
             <h2>my thoughts</h2>
             <p>Random musings and dev updates:</p>
-            
+
             <div class="blog-scroll-container">
                 <div class="blog-posts-wrapper" id="blogPostsContainer">
-                    <!-- Blog posts will be loaded here via JavaScript -->
                     <div class="loading-posts">loading posts...</div>
                 </div>
                 <div class="scroll-arrow scroll-left">
@@ -1084,19 +137,18 @@
                     <i class="fas fa-chevron-right"></i>
                 </div>
             </div>
-            
+
             <div class="text-center" style="margin-top: 2rem;">
                 <a href="/blog" class="btn">read more posts</a>
             </div>
         </div>
     </section>
-    
-    <!-- Socials Section -->
+
     <section id="socials">
         <div class="container">
             <h2>find me online</h2>
             <p>I'd love to connect! Check out my game and social media:</p>
-            
+
             <div class="social-links">
                 <a href="https://store.steampowered.com/app/3045100/Mind_Garden/" class="social-card" target="_blank">
                     <i class="fab fa-steam social-icon"></i>
@@ -1104,21 +156,18 @@
                     <div class="social-username">Mind Garden</div>
                     <span class="btn">visit page</span>
                 </a>
-                
                 <a href="https://www.tiktok.com/@mindgarden8" class="social-card" target="_blank">
                     <i class="fab fa-tiktok social-icon"></i>
                     <div class="social-name">TikTok</div>
                     <div class="social-username">@mindgarden8</div>
                     <span class="btn">follow me</span>
                 </a>
-                
                 <a href="https://x.com/jolovescatmemes" class="social-card" target="_blank">
                     <i class="fab fa-x-twitter social-icon"></i>
                     <div class="social-name">X (Twitter)</div>
                     <div class="social-username">@jolovescatmemes</div>
                     <span class="btn">follow me</span>
                 </a>
-                
                 <a href="https://www.linkedin.com/in/joseph-smithberger-2649942ab/" class="social-card" target="_blank">
                     <i class="fab fa-linkedin-in social-icon"></i>
                     <div class="social-name">LinkedIn</div>
@@ -1126,14 +175,38 @@
                     <span class="btn">connect</span>
                 </a>
             </div>
-            
-            <div style="text-align: center; margin-top: 2rem;">
-                <p><i class="fas fa-envelope"></i> <a href="mailto:josephsmithberger@gmail.com">josephsmithberger@gmail.com</a></p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>say hello!</h2>
+            <div class="contact-form-container glass-panel">
+                <p style="text-align: center; margin-bottom: 2rem; font-size: 1.6rem;">Have a question, feedback, or want to collaborate? Send me a message!</p>
+                <form id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="_replyto" required> </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn" style="--rotation: 0.5deg;">Send Message <i class="fas fa-paper-plane" style="margin-left: 8px;"></i></button>
+                    </div>
+                </form>
+                <p style="text-align: center; font-size: 1.4rem; margin-top: 2rem;">
+                    Or, email me directly at: <a href="mailto:josephsmithberger@gmail.com" style="text-decoration: underline;">josephsmithberger@gmail.com</a>
+                </p>
             </div>
         </div>
     </section>
-    
-    <!-- Footer -->
+
+
     <footer>
         <div class="container">
             <div class="footer-text">
@@ -1142,143 +215,164 @@
             </div>
         </div>
     </footer>
-    
-    <!-- JavaScript -->
+
     <script>
-        // Mobile Menu Toggle
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenu.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-        
-        // Hide mobile menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                window.scrollTo({
-                    top: targetElement.offsetTop - 70,
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // Add slight rotation to elements for hand-drawn feel
-        document.querySelectorAll('.project-card, .gallery-item').forEach(el => {
-            const randomRotation = (Math.random() * 2 - 1) * 0.5;
-            el.style.transform = `rotate(${randomRotation}deg)`;
-        });
-        
-        // Blog System JavaScript
         document.addEventListener('DOMContentLoaded', function() {
-            // Only run this code if the blog container exists
-            const blogContainer = document.getElementById('blogPostsContainer');
-            if (!blogContainer) return;
+            // Mobile Menu Toggle
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
 
-            // Function to generate a random rotation between -2 and 2 degrees
-            function getRandomRotation() {
-                return (Math.random() * 4 - 2).toFixed(2) + 'deg';
-            }
+            mobileMenu.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
 
-            // Function to fetch blog posts
-            async function fetchBlogPosts() {
-                try {
-                    const response = await fetch('/blog/blog-data.json');
-                    if (!response.ok) {
-                        throw new Error('Failed to fetch blog posts');
+            // Hide mobile menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) { // Only if menu is open
+                        mobileMenu.classList.remove('active');
+                        navLinks.classList.remove('active');
                     }
-                    
-                    const data = await response.json();
-                    return data.posts;
-                } catch (error) {
-                    console.error('Error fetching blog posts:', error);
-                    return [];
+                });
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href.startsWith('#') && href.length > 1) { // Ensure it's a valid internal anchor
+                        e.preventDefault();
+                        const targetId = href;
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 70, // Adjusted for fixed nav
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Staggered animation for cards (project, gallery, social, blog)
+            const animatedElements = document.querySelectorAll('.project-card, .gallery-item, .social-card, .blog-card');
+            animatedElements.forEach((el, index) => {
+                el.style.setProperty('--delay', (index * 0.08) + 's');
+            });
+            
+            // Active class to nav links on scroll
+            const sections = document.querySelectorAll('section[id]');
+            const navAnchors = document.querySelectorAll('nav .nav-links a');
+
+            function setActiveLink() {
+                let currentSectionId = '';
+                const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollPosition >= sectionTop - 80) { // 70 for nav height + 10 buffer
+                        currentSectionId = section.getAttribute('id');
+                    }
+                });
+                
+                const blogLink = document.querySelector('nav .nav-links a[href="/blog"]');
+                const isBlogPage = window.location.pathname.startsWith('/blog');
+
+                navAnchors.forEach(a => {
+                    a.classList.remove('active');
+                    const href = a.getAttribute('href');
+
+                    if (isBlogPage && href === '/blog') {
+                        a.classList.add('active');
+                    } else if (!isBlogPage && href === `#${currentSectionId}`) {
+                        a.classList.add('active');
+                    }
+                });
+                
+                if (!isBlogPage && !currentSectionId && scrollPosition < window.innerHeight / 2) {
+                     const homeLink = document.querySelector('nav .nav-links a[href="#hero"]');
+                     if(homeLink) homeLink.classList.add('active');
                 }
             }
+            
+            window.addEventListener('scroll', setActiveLink);
+            setActiveLink(); // Call on load
 
-            // Function to create blog post card
-            function createBlogPostCard(post) {
-                const rotation = getRandomRotation();
-                
-                const card = document.createElement('div');
-                card.className = 'blog-card';
-                card.style.setProperty('--random-rotation', rotation);
-                
-                const content = `
-                    <div class="blog-image-container">
-                        <img src="${post.thumbnail}" alt="${post.title}" class="blog-image">
-                    </div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">${post.title}</h3>
-                        <div class="blog-date">${post.date}</div>
-                        <p class="blog-excerpt">${post.excerpt}</p>
-                        <a href="/blog/posts/${post.slug}.html" class="blog-link">read more</a>
-                    </div>
-                `;
-                
-                card.innerHTML = content;
-                return card;
-            }
 
-            // Load blog posts
-            async function loadBlogPosts() {
-                const posts = await fetchBlogPosts();
-                
-                if (posts.length === 0) {
-                    blogContainer.innerHTML = '<p class="loading-posts">No posts found</p>';
-                    return;
+            // Blog System JavaScript
+            const blogContainer = document.getElementById('blogPostsContainer');
+            if (blogContainer) {
+                function getRandomRotation() {
+                    return (Math.random() * 4 - 2).toFixed(2) + 'deg';
                 }
-                
-                // Clear loading message
-                blogContainer.innerHTML = '';
-                
-                // Sort posts by date (newest first)
-                posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-                
-                // Add the latest 5 posts to the container
-                const latestPosts = posts.slice(0, 5);
-                latestPosts.forEach(post => {
-                    const card = createBlogPostCard(post);
-                    blogContainer.appendChild(card);
-                });
-                
-                // Initialize horizontal scrolling
-                initHorizontalScroll();
-            }
 
-            // Initialize horizontal scrolling with arrow buttons
-            function initHorizontalScroll() {
-                const scrollContainer = document.querySelector('.blog-posts-wrapper');
-                const leftArrow = document.querySelector('.scroll-left');
-                const rightArrow = document.querySelector('.scroll-right');
-                
-                if (!scrollContainer || !leftArrow || !rightArrow) return;
-                
-                leftArrow.addEventListener('click', () => {
-                    scrollContainer.scrollBy({ left: -320, behavior: 'smooth' });
-                });
-                
-                rightArrow.addEventListener('click', () => {
-                    scrollContainer.scrollBy({ left: 320, behavior: 'smooth' });
-                });
-            }
+                async function fetchBlogPosts() {
+                    try {
+                        const response = await fetch('/blog/blog-data.json');
+                        if (!response.ok) {
+                            throw new Error('Failed to fetch blog posts');
+                        }
+                        const data = await response.json();
+                        return data.posts;
+                    } catch (error) {
+                        console.error('Error fetching blog posts:', error);
+                        blogContainer.innerHTML = '<p class="loading-posts">Could not load posts. <br>Make sure /blog/blog-data.json exists.</p>';
+                        return [];
+                    }
+                }
 
-            // Load the posts
-            loadBlogPosts();
+                function createBlogPostCard(post) {
+                    const rotation = getRandomRotation();
+                    const card = document.createElement('div');
+                    card.className = 'blog-card';
+                    card.style.setProperty('--random-rotation', rotation);
+                    const content = `
+                        <div class="blog-image-container">
+                            <img src="${post.thumbnail}" alt="${post.title}" class="blog-image">
+                        </div>
+                        <div class="blog-content">
+                            <h3 class="blog-title">${post.title}</h3>
+                            <div class="blog-date">${post.date}</div>
+                            <p class="blog-excerpt">${post.excerpt}</p>
+                            <a href="/blog/posts/${post.slug}.html" class="blog-link">read more</a>
+                        </div>
+                    `;
+                    card.innerHTML = content;
+                    return card;
+                }
+
+                async function loadBlogPosts() {
+                    const posts = await fetchBlogPosts();
+                    if (!posts || posts.length === 0) {
+                        if (blogContainer.querySelector('.loading-posts')) {
+                           // Error or no posts message already handled
+                        } else if (posts && posts.length === 0) {
+                            blogContainer.innerHTML = '<p class="loading-posts">No posts found</p>';
+                        }
+                        return;
+                    }
+                    blogContainer.innerHTML = '';
+                    posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    const latestPosts = posts.slice(0, 5);
+                    latestPosts.forEach((post, index) => {
+                        const card = createBlogPostCard(post);
+                        card.style.setProperty('--delay', (index * 0.1) + 's');
+                        blogContainer.appendChild(card);
+                    });
+                    initHorizontalScroll();
+                }
+
+                function initHorizontalScroll() {
+                    const scrollContainer = document.querySelector('.blog-posts-wrapper');
+                    const leftArrow = document.querySelector('.scroll-left');
+                    const rightArrow = document.querySelector('.scroll-right');
+                    if (!scrollContainer || !leftArrow || !rightArrow) return;
+                    leftArrow.addEventListener('click', () => scrollContainer.scrollBy({ left: -320, behavior: 'smooth' }));
+                    rightArrow.addEventListener('click', () => scrollContainer.scrollBy({ left: 320, behavior: 'smooth' }));
+                }
+                loadBlogPosts();
+            }
         });
     </script>
 </body>

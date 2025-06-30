@@ -1,0 +1,69 @@
+<!-- Portfolio Home (projects section) -->
+<!-- Replace this with your actual homepage content and structure -->
+<section id="projects" class="projects-section">
+    <div class="container">
+        <h2>my projects</h2>
+        <div class="projects-list">
+            <!-- Example project card (replace with your real projects) -->
+            <div class="project-card">
+                <h3>Mind Garden</h3>
+                <p>A cozy gardening game about growing your mind. (WIP)</p>
+                <a href="https://woafie.itch.io/mind-garden" class="project-link" target="_blank">View on itch.io</a>
+            </div>
+            <!-- Game Jam Button -->
+            <div class="project-card">
+                <h3>Game Jam Games</h3>
+                <p>Short games made for game jams, including Kintsugi and Rollbit.</p>
+                <a href="/blog/game-jams.html" class="project-link">View Game Jam Games</a>
+            </div>
+            <!-- Add more project cards as needed -->
+        </div>
+    </div>
+</section>
+<style>
+.projects-section {
+    padding: 6rem 0 4rem;
+    background: none;
+}
+.projects-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.project-card {
+    background: rgba(255,255,255,0.7);
+    border-radius: 20px;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.08);
+    padding: 2rem;
+    border: 2px dashed var(--secondary, #4a6741);
+    min-width: 260px;
+    max-width: 340px;
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.project-card h3 {
+    margin-top: 0;
+}
+.project-link {
+    margin-top: 1rem;
+    padding: 0.5rem 1.2rem;
+    background: var(--primary, #4a6741);
+    color: #fff;
+    border-radius: 15px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: background 0.2s;
+}
+.project-link:hover {
+    background: var(--secondary, #b48e5c);
+}
+@media (max-width: 700px) {
+    .projects-list {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+</style>
