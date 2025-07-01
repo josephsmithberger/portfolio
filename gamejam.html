@@ -6,6 +6,59 @@
     <title>Game Jam Games | Joseph Smithberger</title>
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .gamejam-header {
+            margin-top: 110px;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+        .gamejam-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            justify-content: center;
+        }
+        .gamejam-card {
+            background: rgba(255,255,255,0.85);
+            border-radius: 18px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+            padding: 2.5rem 2rem 2rem 2rem;
+            max-width: 600px;
+            min-width: 320px;
+            width: 100%;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .gamejam-embed { margin-bottom: 1.2rem; }
+        .gamejam-info h3 { margin-bottom: 0.5rem; }
+        .gamejam-memo { font-size: 1.3rem; color: #4a6741; background: #f5f0e8; border-radius: 8px; padding: 0.7rem 1rem; margin-top: 0.5rem; }
+        @media (max-width: 700px) {
+            .gamejam-list { flex-direction: column; align-items: center; }
+            .gamejam-card { min-width: unset; max-width: 98vw; }
+        }
+        .gamejam-btn {
+            display: block;
+            margin: 2.5rem auto 3.5rem auto;
+            padding: 0.7rem 1.5rem;
+            font-size: 1.3rem;
+            background: var(--primary);
+            color: var(--light-text);
+            border-radius: 12px;
+            border: none;
+            font-family: 'Reenie Beanie', cursive;
+            font-weight: 700;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: background 0.2s, transform 0.2s;
+            cursor: pointer;
+        }
+        .gamejam-btn:hover {
+            background: var(--secondary);
+            transform: scale(1.04) rotate(-1deg);
+        }
+    </style>
 </head>
 <body>
     <nav id="navbar">
@@ -22,29 +75,28 @@
         </div>
     </nav>
     <main>
-        <section class="container">
-            <h2>Game Jam Games</h2>
-            <div class="gamejam-list">
-                <div class="gamejam-card">
-                    <div class="gamejam-embed">
-                        <iframe frameborder="0" src="https://itch.io/embed/3681128" width="552" height="167"><a href="https://woafie.itch.io/rollbit">Rollbit by Joseph smithberger</a></iframe>
-                    </div>
-                    <div class="gamejam-info">
-                        <h3>Rollbit</h3>
-                        <p class="gamejam-memo">[Short memo about Rollbit goes here]</p>
-                    </div>
+        <h1 class="gamejam-header">Game Jam Games</h1>
+        <a href="/index.html#projects" class="gamejam-btn">← Back to Main Projects</a>
+        <div class="gamejam-list">
+            <div class="gamejam-card">
+                <div class="gamejam-embed">
+                    <iframe frameborder="0" src="https://itch.io/embed/2976076" width="552" height="167"><a href="https://woafie.itch.io/kintsugi">Kintsugi by Joseph smithberger</a></iframe>
                 </div>
-                <div class="gamejam-card">
-                    <div class="gamejam-embed">
-                        <iframe frameborder="0" src="https://itch.io/embed/2976076" width="552" height="167"><a href="https://woafie.itch.io/kintsugi">Kintsugi by Joseph smithberger</a></iframe>
-                    </div>
-                    <div class="gamejam-info">
-                        <h3>Kintsugi</h3>
-                        <p class="gamejam-memo">[Short memo about Kintsugi goes here]</p>
-                    </div>
+                <div class="gamejam-info">
+                    <h3>Kintsugi</h3>
+                    <p class="gamejam-memo">my first ever game jam</p>
                 </div>
             </div>
-        </section>
+            <div class="gamejam-card">
+                <div class="gamejam-embed">
+                    <iframe frameborder="0" src="https://itch.io/embed/3681128" width="552" height="167"><a href="https://woafie.itch.io/rollbit">Rollbit by Joseph smithberger</a></iframe>
+                </div>
+                <div class="gamejam-info">
+                    <h3>Rollbit</h3>
+                    <p class="gamejam-memo">xogot game jam entry</p>
+                </div>
+            </div>
+        </div>
     </main>
 </body>
 </html>

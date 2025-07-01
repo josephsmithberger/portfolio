@@ -14,6 +14,7 @@
     
     <!-- Updated Style references -->
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="blog-styles.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -52,6 +53,19 @@
         <div class="container">
             <h1>my blog</h1>
             <p>Random thoughts, game development updates, and creative adventures</p>
+            
+            <!-- Blog Posts Container -->
+            <div id="blogListContainer" class="blog-posts-container">
+                <!-- Blog Post Card Template (hidden) -->
+                <div class="blog-post-card" style="display:none;">
+                    <img src="assets/jam_thumb.jpg" alt="Rollbit Game Jam Thumbnail" class="blog-post-thumb">
+                    <div class="blog-post-info">
+                        <h2><a href="posts/second-game-jam.html">My Second Ever Game Jam!</a></h2>
+                        <p>A deep dive into my second game jam experience, tools, process, and lessons learned. Includes tips for web motion controls, 3D visuals, and more.</p>
+                        <a href="posts/second-game-jam.html" class="blog-readmore">Read More →</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
     
@@ -63,7 +77,7 @@
         <div class="container">
             <div class="footer-text">
                 <p>Thanks for reading!</p>
-                <p class="copyright">© 2024 Joseph Smithberger</p>
+                <p class="copyright">© 2025 Joseph Smithberger</p>
             </div>
         </div>
     </footer>

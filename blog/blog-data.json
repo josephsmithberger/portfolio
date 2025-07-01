@@ -8,6 +8,15 @@
       "thumbnail": "/blog/assets/first-post-thumb.jpg",
       "excerpt": "hi! I decided to add a blog to my site just for fun! this first post is just to check if everything is working.",
       "tags": ["personal", "announcement"]
+    },
+    {
+      "id": 2,
+      "slug": "second-game-jam",
+      "title": "My Second Ever Game Jam!",
+      "date": "June 30, 2025",
+      "thumbnail": "/blog/assets/jam_thumb.jpg",
+      "excerpt": "A deep dive into my second game jam experience, tools, process, and lessons learned. Includes tips for web motion controls, 3D visuals, and more.",
+      "tags": ["game jam", "devlog", "xogot"]
     }
   ]
 }

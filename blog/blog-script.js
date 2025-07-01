@@ -95,4 +95,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Load the posts
     loadBlogPosts();
+
+    // Add new post to posts array
+    const newPost = {
+        title: "My Second Ever Game Jam!",
+        slug: "second-game-jam.html",
+        thumbnail: "assets/jam_thumb.jpg",
+        excerpt: "A deep dive into my second game jam experience, tools, process, and lessons learned. Includes tips for web motion controls, 3D visuals, and more.",
+        date: "2025-06-30"
+    };
+
+    // Assuming there's a function or method to add the new post to the existing posts
+    addPostToArray(newPost);
 });
