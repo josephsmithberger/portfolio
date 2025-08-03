@@ -19,11 +19,11 @@ html {
 }
 
 body {
-    font-family: 'Reenie Beanie', cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--background);
     color: var(--text);
     line-height: 1.6;
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     overflow-x: hidden; 
 }
 
@@ -47,12 +47,12 @@ h1, h2, h3, h4 {
     font-family: 'Reenie Beanie', cursive;
 }
 h1 {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     margin-bottom: 1.5rem;
     text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
 }
 h2 {
-    font-size: 3rem; 
+    font-size: 2.5rem; 
     position: relative;
     display: inline-block;
     text-transform: lowercase;
@@ -72,7 +72,7 @@ h2:after {
 }
 p {
     margin-bottom: 1.5rem;
-    font-size: 1.7rem; 
+    font-size: 1.1rem; 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
 }
 .reenie-text {
@@ -610,6 +610,29 @@ footer {
     overflow: hidden;
 }
 footer p { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: var(--light-text); }
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.visitor-counter {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+    transform: rotate(-1deg);
+    transition: transform 0.3s ease;
+}
+.visitor-counter:hover {
+    transform: rotate(0deg) scale(1.05);
+}
+.visitor-counter p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
 footer::before {
     content: '';
     position: absolute;
@@ -705,7 +728,9 @@ footer::before {
     .social-card { width: 90%; max-width: 300px; transform: rotate(0deg) !important; } 
     .project-card { transform: rotate(0deg) !important; } 
     .blog-card { flex: 0 0 220px; transform: rotate(var(--random-rotation)) !important; } 
-    .form-group label { font-size: 1.8rem; transform: rotate(0deg); } 
+    .form-group label { font-size: 1.8rem; transform: rotate(0deg); }
+    .footer-content { flex-direction: column; gap: 0.5rem; }
+    .visitor-counter { transform: rotate(0deg); }
 }
 
 @media (max-width: 480px) {

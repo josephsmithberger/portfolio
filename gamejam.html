@@ -5,24 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Jam Games | Joseph Smithberger</title>
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
         .gamejam-header {
             margin-top: 110px;
             margin-bottom: 2.5rem;
             text-align: center;
+            font-size: 2.5rem;
         }
         .gamejam-list {
             display: flex;
             flex-wrap: wrap;
             gap: 2.5rem;
             justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
         .gamejam-card {
-            background: rgba(255,255,255,0.85);
-            border-radius: 18px;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.07);
-            padding: 2.5rem 2rem 2rem 2rem;
+            background-color: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(6px);
+            border-radius: 20px;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.1);
+            border: 2px dashed var(--accent);
+            padding: 2.5rem 2rem;
             max-width: 600px;
             min-width: 320px;
             width: 100%;
@@ -30,40 +40,90 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            transform: rotate(-0.5deg);
+            transition: all 0.3s ease;
         }
-        .gamejam-embed { margin-bottom: 1.2rem; }
-        .gamejam-info h3 { margin-bottom: 0.5rem; }
-        .gamejam-memo { font-size: 1.3rem; color: #4a6741; background: #f5f0e8; border-radius: 8px; padding: 0.7rem 1rem; margin-top: 0.5rem; }
+        .gamejam-card:nth-child(even) {
+            transform: rotate(0.5deg);
+        }
+        .gamejam-card:hover {
+            transform: translateY(-5px) rotate(-0.5deg) scale(1.02);
+            box-shadow: 12px 12px 0 rgba(0,0,0,0.15);
+        }
+        .gamejam-card:nth-child(even):hover {
+            transform: translateY(-5px) rotate(0.5deg) scale(1.02);
+        }
+        .gamejam-embed { 
+            margin-bottom: 1.5rem; 
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+        }
+        .gamejam-info h3 { 
+            margin-bottom: 0.5rem; 
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-family: 'Reenie Beanie', cursive;
+        }
+        .gamejam-memo { 
+            font-size: 1.1rem; 
+            color: var(--accent); 
+            background-color: rgba(245, 240, 232, 0.8);
+            border-radius: 15px; 
+            padding: 0.8rem 1.2rem; 
+            margin-top: 0.5rem;
+            border: 1px dashed var(--secondary);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
         @media (max-width: 700px) {
-            .gamejam-list { flex-direction: column; align-items: center; }
-            .gamejam-card { min-width: unset; max-width: 98vw; }
+            .gamejam-list { 
+                flex-direction: column; 
+                align-items: center; 
+                padding: 0 1rem;
+            }
+            .gamejam-card { 
+                min-width: unset; 
+                max-width: 95vw;
+                transform: rotate(0deg) !important;
+                padding: 2rem 1.5rem;
+            }
+            .gamejam-card:hover {
+                transform: translateY(-5px) rotate(0deg) scale(1.02) !important;
+            }
+            .gamejam-header {
+                font-size: 2rem;
+            }
         }
         .gamejam-btn {
             display: block;
             margin: 2.5rem auto 3.5rem auto;
-            padding: 0.7rem 1.5rem;
+            padding: 0.8rem 1.5rem;
             font-size: 1.3rem;
-            background: var(--primary);
+            background-color: var(--primary);
             color: var(--light-text);
-            border-radius: 12px;
+            border-radius: 20px;
             border: none;
             font-family: 'Reenie Beanie', cursive;
             font-weight: 700;
             letter-spacing: 1px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: background 0.2s, transform 0.2s;
+            box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
             cursor: pointer;
+            text-decoration: none;
+            transform: rotate(-1deg);
         }
         .gamejam-btn:hover {
-            background: var(--secondary);
-            transform: scale(1.04) rotate(-1deg);
+            background-color: var(--secondary);
+            transform: translateY(-3px) rotate(-1deg) scale(1.05);
+            box-shadow: 5px 5px 0 rgba(0,0,0,0.25);
+            color: var(--light-text);
         }
     </style>
 </head>
 <body>
     <nav id="navbar">
         <div class="nav-container">
-            <div class="logo">joseph~</div>
+            <a href="/" class="logo">joseph~</a>
             <ul class="nav-links">
                 <li><a href="/index.html#hero">home</a></li>
                 <li><a href="/index.html#about">about</a></li>
@@ -72,6 +132,11 @@
                 <li><a href="/index.html#socials">socials</a></li>
                 <li><a href="/index.html#contact">contact</a></li>
             </ul>
+            <div class="mobile-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
         </div>
     </nav>
     <main>
@@ -98,5 +163,62 @@
             </div>
         </div>
     </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Joseph Smithberger</p>
+                <div class="visitor-counter">
+                    <p>👀 <span id="visitor-count">Loading...</span> visitors</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (mobileMenu && navLinks) {
+                mobileMenu.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                });
+
+                // Hide mobile menu when clicking on a link
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (navLinks.classList.contains('active')) {
+                            mobileMenu.classList.remove('active');
+                            navLinks.classList.remove('active');
+                        }
+                    });
+                });
+            }
+
+            // Visitor Counter
+            async function updateVisitorCount() {
+                try {
+                    const response = await fetch('https://api.countapi.xyz/hit/josephsmithberger.com/visits');
+                    const data = await response.json();
+                    
+                    const counterElement = document.getElementById('visitor-count');
+                    if (counterElement && data.value) {
+                        counterElement.textContent = data.value.toLocaleString();
+                    }
+                } catch (error) {
+                    console.error('Error updating visitor count:', error);
+                    const counterElement = document.getElementById('visitor-count');
+                    if (counterElement) {
+                        counterElement.textContent = '🌱';
+                    }
+                }
+            }
+
+            updateVisitorCount();
+        });
+    </script>
 </body>
 </html>
