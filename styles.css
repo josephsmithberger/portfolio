@@ -684,29 +684,49 @@ footer::before {
 
 /* Responsive Design */
 @media (max-width: 992px) {
-    h1 { font-size: 3.5rem; }
-    .hero-title { font-size: 3rem; }
-    h2 { font-size: 2.5rem; }
-    .hero-image { width: 50%; opacity: 0.5; animation: none; }
-    .about-grid { grid-template-columns: 1fr; }
+    /* Tablet and smaller desktop adjustments */
+    .container { padding: 0 1.5rem; }
+    
+    h1 { font-size: 3.2rem; }
+    .hero-title { font-size: 2.8rem; }
+    h2 { font-size: 2.3rem; }
+    .hero-image { width: 50%; opacity: 0.4; animation: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
     .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); } 
     .scroll-arrow { width: 40px; height: 40px; }
     .blog-card { flex: 0 0 250px; }
-    .contact-form-container { margin: 0; } 
+    .contact-form-container { margin: 0 0.5rem; }
+    
+    /* Better spacing for medium screens */
+    .social-links { gap: 1.2rem; }
+    .project-card { margin-bottom: 2.5rem; }
 }
 
 @media (max-width: 768px) {
-    body { font-size: 1.6rem; } 
-    p {font-size: 1.5rem;}
-    h1 { font-size: 2.8rem; }
-    h2 { font-size: 2.2rem; }
-    .hero-title { font-size: 2.5rem; }
-    .hero-content { padding: 2rem; }
+    /* Container adjustments for mobile */
+    .container { padding: 0 1rem; }
+    section { padding: 3rem 0; }
+    
+    /* Typography scaling */
+    body { font-size: 1.4rem; } 
+    p { font-size: 1.3rem; }
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    .hero-title { font-size: 2.2rem; }
+    
+    /* Hero section mobile optimizations */
+    .hero-content { 
+        padding: 1.5rem; 
+        margin: 0 0.5rem;
+        max-width: none;
+    }
     .hero-image {
         position: fixed; width: 100%; height: 100%; object-fit: cover;
-        opacity: 0.1; top: 0; right: 0; transform: none; border: none;
+        opacity: 0.08; top: 0; right: 0; transform: none; border: none;
         box-shadow: none; border-radius: 0; z-index: -1; animation: none;
     }
+    
+    /* Navigation mobile adjustments */
     .nav-links {
         position: fixed; background-color: rgba(245, 240, 232, 0.98); 
         top: 65px; 
@@ -715,35 +735,282 @@ footer::before {
         transition: all 0.5s ease; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         padding: 0; z-index: 999; 
     }
-    nav { transform: rotate(0deg);} 
+    nav { transform: rotate(0deg); } 
     .nav-links.active { height: auto; padding: 2rem 0; }
     .nav-links li { margin: 1rem 0; transform: none !important; } 
     .mobile-menu { display: block; z-index: 1001; } 
     .mobile-menu.active .bar:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
     .mobile-menu.active .bar:nth-child(2) { opacity: 0; }
     .mobile-menu.active .bar:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
-    .glass-panel, .contact-form-container { padding: 2rem; margin: 0 0.5rem; transform: rotate(0deg); } 
-    .gallery-grid { grid-template-columns: 1fr; }
-    .social-links { flex-direction: column; align-items: center; }
-    .social-card { width: 90%; max-width: 300px; transform: rotate(0deg) !important; } 
-    .project-card { transform: rotate(0deg) !important; } 
-    .blog-card { flex: 0 0 220px; transform: rotate(var(--random-rotation)) !important; } 
-    .form-group label { font-size: 1.8rem; transform: rotate(0deg); }
-    .footer-content { flex-direction: column; gap: 0.5rem; }
+    
+    /* Glass panels and containers */
+    .glass-panel, .contact-form-container { 
+        padding: 1.5rem; 
+        margin: 0 0.5rem; 
+        transform: rotate(0deg);
+        border-radius: 20px;
+    } 
+    
+    /* Gallery mobile layout */
+    .gallery-grid { 
+        grid-template-columns: 1fr; 
+        gap: 1.5rem;
+    }
+    .gallery-item {
+        margin: 0 auto;
+        max-width: 350px;
+    }
+    
+    /* Social cards mobile layout */
+    .social-links { 
+        flex-direction: column; 
+        align-items: center; 
+        gap: 1rem;
+    }
+    .social-card { 
+        width: 100%; 
+        max-width: 280px; 
+        transform: rotate(0deg) !important;
+        margin: 0 auto;
+    } 
+    
+    /* Project cards mobile layout */
+    .project-card { 
+        transform: rotate(0deg) !important; 
+        margin: 0 0.5rem 2rem 0.5rem;
+        border-radius: 20px;
+    }
+    .project-image {
+        height: 200px;
+    }
+    .project-content {
+        padding: 1.5rem;
+    }
+    
+    /* Blog cards mobile layout */
+    .blog-card { 
+        flex: 0 0 280px; 
+        transform: rotate(0deg) !important;
+        margin: 0 0.5rem;
+        min-height: 300px;
+    } 
+    
+    /* Blog scroll improvements for mobile */
+    .blog-scroll-container {
+        margin: 1.5rem 0;
+        padding: 0.5rem 0;
+    }
+    
+    .blog-posts-wrapper {
+        gap: 1rem;
+        padding: 0.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .scroll-arrow {
+        width: 40px;
+        height: 40px;
+        opacity: 0.8;
+    }
+    
+    .blog-content {
+        padding: 1.2rem;
+    }
+    
+    .blog-title {
+        font-size: 1.4rem;
+    }
+    
+    .blog-excerpt {
+        font-size: 1.1rem;
+    } 
+    
+    /* Form improvements */
+    .form-group label { 
+        font-size: 1.6rem; 
+        transform: rotate(0deg); 
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group textarea {
+        font-size: 1.1rem;
+        padding: 0.7rem;
+    }
+    
+    /* About section mobile */
+    .about-image {
+        max-width: 250px;
+        margin: 0 auto;
+        display: block;
+    }
+    .skill-tag {
+        font-size: 1.1rem;
+        padding: 0.4rem 0.8rem;
+        transform: rotate(0deg) !important;
+    }
+    
+    /* Footer mobile */
+    .footer-content { 
+        flex-direction: column; 
+        gap: 0.5rem; 
+        text-align: center;
+    }
     .visitor-counter { transform: rotate(0deg); }
+    
+    /* Button adjustments */
+    .btn {
+        font-size: 1.3rem;
+        padding: 0.8rem 1.5rem;
+        margin: 0.5rem;
+    }
 }
 
 @media (max-width: 480px) {
-    h1 { font-size: 2.2rem; }
-    .hero-title {font-size: 2rem;}
-    h2 { font-size: 1.8rem; }
-    .btn { font-size: 1.2rem; padding: 0.7rem 1.2rem;}
-    .blog-card { flex: 0 0 80vw; } 
-    .project-content, .gallery-content, .blog-content, .social-card { padding: 1.5rem; }
-    .contact-form-container { padding: 1.5rem; }
+    /* Even smaller mobile adjustments */
+    .container { padding: 0 0.75rem; }
+    section { padding: 2.5rem 0; }
+    
+    /* Typography for small screens */
+    h1 { font-size: 2rem; }
+    .hero-title { font-size: 1.8rem; }
+    h2 { font-size: 1.7rem; }
+    body { font-size: 1.2rem; }
+    p { font-size: 1.1rem; }
+    
+    /* Button adjustments */
+    .btn { 
+        font-size: 1.1rem; 
+        padding: 0.6rem 1rem;
+        margin: 0.3rem;
+    }
+    
+    /* Hero content for very small screens */
+    .hero-content {
+        padding: 1.2rem;
+        margin: 0 0.25rem;
+    }
+    
+    /* Blog cards for small screens */
+    .blog-card { 
+        flex: 0 0 75vw; 
+        margin: 0 0.25rem;
+    } 
+    
+    /* Content padding adjustments */
+    .project-content, 
+    .gallery-content, 
+    .blog-content, 
+    .social-card { 
+        padding: 1.2rem; 
+    }
+    .contact-form-container { 
+        padding: 1.2rem; 
+        margin: 0 0.25rem;
+    }
+    
+    /* Form elements for small screens */
+    .form-group label {
+        font-size: 1.4rem;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group textarea {
+        font-size: 1rem;
+        padding: 0.6rem;
+    }
+    
+    /* Social cards for very small screens */
+    .social-card {
+        max-width: 250px;
+        padding: 1.2rem;
+    }
+    .social-icon {
+        font-size: 2rem;
+    }
+    
+    /* About image smaller */
+    .about-image {
+        max-width: 200px;
+    }
+    
+    /* Skill tags smaller */
+    .skill-tag {
+        font-size: 1rem;
+        padding: 0.3rem 0.6rem;
+        margin: 0.2rem;
+    }
 }
 
 /* Custom Cursor */
 .custom-cursor {
     display: none !important; 
+}
+
+/* Mobile-specific enhancements */
+@media (max-width: 768px) {
+    /* Add subtle shadows and borders for mobile depth */
+    .glass-panel {
+        border: 1px solid var(--secondary);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .project-card {
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        border: 1px solid var(--accent);
+    }
+    
+    .social-card {
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        border: 1px solid var(--secondary);
+    }
+    
+    /* Better mobile typography hierarchy */
+    .hero-description {
+        font-size: 1.2rem;
+        line-height: 1.5;
+    }
+    
+    .project-title {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .social-name {
+        font-size: 1.3rem;
+    }
+    
+    .social-username {
+        font-size: 1rem;
+    }
+    
+    /* Improve touch targets */
+    .btn {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .nav-links a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Better mobile spacing */
+    .skills {
+        margin-top: 1.5rem;
+    }
+    
+    .featured-badge {
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    /* Hide/reduce decorative elements on mobile */
+    .cloud {
+        display: none;
+    }
 }
