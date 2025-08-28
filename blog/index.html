@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Updated Style references -->
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="blog-styles.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/blog/blog-styles.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -53,6 +53,10 @@
         <div class="container">
             <h1>my blog</h1>
             <p>Random thoughts, game development updates, and creative adventures</p>
+            <div class="blog-filters">
+                <div class="filter-label">filter by tag:</div>
+                <div id="tagFilters" class="tag-filters"></div>
+            </div>
             
             <!-- Blog Posts Container -->
             <div id="blogListContainer" class="blog-posts-container">
@@ -61,7 +65,7 @@
                     <img src="assets/jam_thumb.jpg" alt="Rollbit Game Jam Thumbnail" class="blog-post-thumb">
                     <div class="blog-post-info">
                         <h2><a href="posts/second-game-jam.html">My Second Ever Game Jam!</a></h2>
-                        <p>A deep dive into my second game jam experience, tools, process, and lessons learned. Includes tips for web motion controls, 3D visuals, and more.</p>
+                        <p>How I made Rollbit for the Xogot game jam!</p>
                         <a href="posts/second-game-jam.html" class="blog-readmore">Read More →</a>
                     </div>
                 </div>
@@ -256,63 +260,8 @@
     
     <style>
         /* Additional styles specific to the blog list page */
-        .blog-list-page {
-            padding-top: 6rem;
-            padding-bottom: 4rem;
-        }
-        
-        .blog-filters {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            margin: 2rem 0;
-            gap: 1rem;
-        }
-        
-        .filter-label {
-            font-size: 1.4rem;
-            color: var(--primary);
-            font-weight: 600;
-        }
-        
-        .tag-filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-        
-        .tag-filter {
-            background-color: rgba(255, 255, 255, 0.6);
-            padding: 0.5rem 1rem;
-            border-radius: 15px;
-            font-size: 1.3rem;
-            cursor: pointer;
-            border: 1px dashed var(--secondary);
-            transition: all 0.3s ease;
-        }
-        
-        .tag-filter:hover {
-            background-color: rgba(255, 255, 255, 0.8);
-            transform: translateY(-2px);
-        }
-        
-        .tag-filter.active {
-            background-color: var(--primary);
-            color: white;
-            border: 1px solid var(--primary);
-        }
-        
-        @media (max-width: 768px) {
-            .blog-filters {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
-            
-            .tag-filters {
-                margin-left: 0;
-            }
-        }
+        .blog-list-page { padding-top: 6rem; padding-bottom: 4rem; }
+        @media (max-width: 768px) { .blog-filters { flex-direction: column; align-items: flex-start; gap: 0.5rem; } }
     </style>
 </body>
 </html>

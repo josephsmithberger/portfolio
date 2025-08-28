@@ -6,7 +6,7 @@
       "title": "First post!",
       "date": "March 17, 2025",
       "thumbnail": "/blog/assets/first-post-thumb.jpg",
-      "excerpt": "hi! I decided to add a blog to my site just for fun! this first post is just to check if everything is working.",
+      "excerpt": "Hi! I decided to add a blog to my site just for fun! this first post is just to check if everything is working.",
       "tags": ["personal", "announcement"]
     },
     {
@@ -15,7 +15,7 @@
       "title": "My Second Ever Game Jam!",
       "date": "June 30, 2025",
       "thumbnail": "/blog/assets/jam_thumb.jpg",
-      "excerpt": "A deep dive into my second game jam experience, tools, process, and lessons learned. Includes tips for web motion controls, 3D visuals, and more.",
+  "excerpt": "How I made Rollbit for the Xogot game jam!",
       "tags": ["game jam", "devlog", "xogot"]
     }
   ]

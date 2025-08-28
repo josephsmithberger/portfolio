@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><!-- Post Title --> | Joseph Smithberger</title>
+    <meta name="description" content="<!-- Short description for SEO/social -->" />
+    <meta property="og:title" content="<!-- Post Title -->" />
+    <meta property="og:description" content="<!-- Short description for social -->" />
+    <meta property="og:image" content="/blog/assets/<!-- thumbnail-filename -->" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/blog/blog-styles.css" />
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">joseph~</a>
+            <ul class="nav-links">
+                <li><a href="/">home</a></li>
+                <li><a href="/#about">about</a></li>
+                <li><a href="/#projects">projects</a></li>
+                <li><a href="/blog" class="active">blog</a></li>
+                <li><a href="/#socials">socials</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="blog-post-container">
+        <header class="blog-post-header">
+            <a href="/blog" class="blog-link"><i class="fas fa-arrow-left"></i> back to all posts</a>
+            <h1><!-- Post Title --></h1>
+            <div class="blog-post-meta">
+                <span class="blog-date"><!-- Month DD, YYYY --></span> •
+                <span class="blog-tags"><!-- comma, separated, tags --></span>
+            </div>
+        </header>
+
+        <article class="blog-post-content">
+            <p><!-- Your awesome content here. Use <h2>, <h3>, <img>, <ul> etc. --></p>
+        </article>
+
+        <div class="blog-nav">
+            <a href="#" class="blog-nav-link prev-post" id="prevPostLink">« previous post</a>
+            <a href="/blog" class="blog-nav-link">all posts</a>
+            <a href="#" class="blog-nav-link next-post" id="nextPostLink">next post »</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-text">
+                <p>Thanks for reading!</p>
+                <p class="copyright">© 2025 Joseph Smithberger</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        if (mobileMenu && navLinks) {
+            mobileMenu.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+        }
+
+        // Prev/Next navigation (derive slug from URL)
+        document.addEventListener('DOMContentLoaded', async () => {
+            const currentPath = window.location.pathname;
+            const currentSlug = currentPath.split('/').pop().replace('.html', '');
+            try {
+                const response = await fetch('/blog/blog-data.json');
+                if (!response.ok) throw new Error('Failed to fetch blog data');
+                const data = await response.json();
+                const posts = data.posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+                const currentIndex = posts.findIndex(p => p.slug === currentSlug);
+                const prevPostLink = document.getElementById('prevPostLink');
+                const nextPostLink = document.getElementById('nextPostLink');
+
+                if (currentIndex > 0) {
+                    const prevPost = posts[currentIndex - 1];
+                    prevPostLink.href = `/blog/posts/${prevPost.slug}.html`;
+                    prevPostLink.style.display = 'inline-block';
+                } else if (prevPostLink) {
+                    prevPostLink.style.display = 'none';
+                }
+
+                if (currentIndex >= 0 && currentIndex < posts.length - 1) {
+                    const nextPost = posts[currentIndex + 1];
+                    nextPostLink.href = `/blog/posts/${nextPost.slug}.html`;
+                    nextPostLink.style.display = 'inline-block';
+                } else if (nextPostLink) {
+                    nextPostLink.style.display = 'none';
+                }
+            } catch (err) {
+                console.error('Error loading blog navigation:', err);
+                document.querySelectorAll('.prev-post, .next-post').forEach(link => {
+                    link.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -117,9 +117,10 @@
             navLinks.classList.toggle('active');
         });
 
-        // Post Navigation
+        // Post Navigation (derive current slug from URL)
         document.addEventListener('DOMContentLoaded', async () => {
-            const currentSlug = "second-game-jam";
+            const currentPath = window.location.pathname;
+            const currentSlug = currentPath.split('/').pop().replace('.html', '');
             try {
                 const response = await fetch('/blog/blog-data.json');
                 const data = await response.json();
