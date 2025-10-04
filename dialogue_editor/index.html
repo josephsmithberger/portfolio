@@ -736,6 +736,11 @@
                 if (!contact) return;
 
                 if (type === 'message') {
+                    const hasSteps = contact.chat.some(entry => typeof entry !== 'string');
+                    if (hasSteps) {
+                        alert('Cannot add standalone NPC messages after steps have been added. Use the success field in steps to add NPC responses.');
+                        return;
+                    }
                     contact.chat.push('New message');
                 } else {
                     contact.chat.push({
@@ -975,6 +980,38 @@
                 });
             },
 
+            addSuccessLine() {
+                const textarea = document.getElementById('successText');
+                if (!textarea) return;
+                const needsNewline = textarea.value.length > 0 && !textarea.value.endsWith('\n');
+                textarea.value = textarea.value + (needsNewline ? '\n' : '');
+                textarea.focus();
+                textarea.setSelectionRange(textarea.value.length, textarea.value.length);
+            },
+
+            attachMessageToPreviousStep(index) {
+                const contact = this.getCurrentContact();
+                if (!contact) return;
+                if (index <= 0) return;
+                const messageEntry = contact.chat[index];
+                const previousEntry = contact.chat[index - 1];
+                if (typeof messageEntry !== 'string' || typeof previousEntry === 'string') {
+                    return;
+                }
+                let success = previousEntry.success;
+                if (success === undefined || success === null || success === '') {
+                    success = [];
+                }
+                if (!Array.isArray(success)) {
+                    success = success !== '' ? [success] : [];
+                }
+                success.push(messageEntry);
+                previousEntry.success = success;
+                contact.chat.splice(index, 1);
+                this.saveToLocalStorage();
+                this.render();
+            },
+
             exportJSON() {
                 const contact = this.getCurrentContact();
                 if (!contact) {
@@ -1081,6 +1118,8 @@
                     return;
                 }
 
+                const hasSteps = contact.chat.some(entry => typeof entry !== 'string');
+
                 content.innerHTML = `
                     <div class="storage-warning">
                         <div class="storage-warning-icon">⚠️</div>
@@ -1128,6 +1167,7 @@
                                 <button class="add-entry-btn" style="flex: 1;" onclick="app.addChatEntry('message')">+ Add Message</button>
                                 <button class="add-entry-btn" style="flex: 1;" onclick="app.addChatEntry('step')">+ Add Step</button>
                             </div>
+                            ${hasSteps ? '<div style="margin-top: 8px; padding: 12px; background: #fef3c7; border: 1px solid #fbbf24; border-radius: 6px; font-size: 13px; color: #92400e;">💡 <strong>Tip:</strong> Cannot add standalone NPC messages after steps. Use the success field in steps for NPC responses, or use the "Attach to Previous Step" button on existing messages.</div>' : ''}
                         </div>
                     </div>
                 `;
@@ -1137,10 +1177,23 @@
                 const isMessage = typeof entry === 'string';
                 const typeClass = isMessage ? 'type-message' : 'type-step';
                 const typeLabel = isMessage ? 'NPC Message' : 'Player Step';
+                const contact = this.getCurrentContact();
+                const entries = contact ? contact.chat : [];
+                const prevIsStep = isMessage && index > 0 && typeof entries[index - 1] !== 'string';
 
                 let content = '';
                 if (isMessage) {
-                    content = `<div class="chat-entry-content">${entry}</div>`;
+                    content = `
+                        <div class="chat-entry-content">${entry}</div>
+                        ${prevIsStep ? `
+                            <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #e5e7eb;">
+                                <button class="btn btn-secondary btn-small" onclick="app.attachMessageToPreviousStep(${index})" title="Move this message into the previous step's success field">
+                                    ⬆️ Attach to Previous Step
+                                </button>
+                                <small style="display: block; margin-top: 8px; color: #6b7280; font-size: 11px;">This will add this message to the previous step's success responses</small>
+                            </div>
+                        ` : ''}
+                    `;
                 } else {
                     const expect = entry.expect || (entry.expect_tokens ? entry.expect_tokens.join(', ') : 'none');
                     const success = Array.isArray(entry.success) ? entry.success.join(' | ') : entry.success;
