@@ -7,6 +7,7 @@ A static site (no build tools) for a personal portfolio and blog. Pages are plai
 - `index.html` — Home page with About, Projects, Gallery, Blog preview, Socials, and Contact
 - `styles.css` — Global styles for the whole site
 - `gamejam.html` — Standalone page listing game jam entries
+- `dialogue_editor/` — Interactive dialogue editor tool for game development (standalone page)
 - `blog/`
   - `index.html` — Blog index; renders cards by fetching `blog-data.json` (now with tag filter UI)
   - `blog-styles.css` — Blog-specific styles (post layout, cards)
@@ -47,12 +48,28 @@ Data shape in `blog/blog-data.json` (used by home, blog index, and post navigati
 - Sorting is performed via `new Date(b.date) - new Date(a.date)`, so keep dates in a format the browser can parse (e.g., “June 30, 2025” or ISO).
 - Card links are generated as `/blog/posts/<slug>.html`, so `slug` must not include `.html`.
 
+## Dialogue Editor Tool
+
+The Dialogue Editor (`/dialogue_editor`) is a standalone interactive tool for creating and managing game dialogue:
+
+- **Purpose**: Create and edit JSON dialogue files for game development (primarily for Godot Engine projects)
+- **Features**:
+  - Visual editor for NPC contacts and conversation flows
+  - Support for message strings and player interaction steps
+  - Import/export JSON dialogue files
+  - Live JSON preview and editing
+  - Local storage auto-save
+- **Styling**: Matches the portfolio's forest green/warm brown aesthetic with handwritten font accents
+- **Access**: Available at `/dialogue_editor` (or `/dialogue_editor/index.html`)
+- **Note**: This is a client-side tool - all data is stored in browser localStorage
+
 ## Edit existing content
 
 - Home content: edit `index.html` and images at the repo root. Gallery images are the `*.jpg/png` files.
 - Navbar: edit the `<nav>` in each page you want to change (the nav is duplicated per page).
 - Global styles: `styles.css`. Blog-specific styles: `blog/blog-styles.css`.
 - Blog post body: edit the corresponding HTML file in `blog/posts/`.
+- Dialogue editor: edit `dialogue_editor/index.html` (self-contained with inline styles and scripts).
 
 ## Create a new blog post (standardized)
 
