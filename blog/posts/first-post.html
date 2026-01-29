@@ -129,21 +129,21 @@
                 // Find current post index
                 const currentIndex = posts.findIndex(post => post.slug === currentSlug);
                 
-                if (currentIndex !== -1) {
-                    const prevPostLink = document.getElementById('prevPostLink');
-                    const nextPostLink = document.getElementById('nextPostLink');
-                    
-                    // Set up previous post link
-                    if (currentIndex < posts.length - 1) {
-                        const prevPost = posts[currentIndex + 1];
-                        prevPostLink.href = `/blog/posts/${prevPost.slug}.html`;
-                        prevPostLink.title = prevPost.title;
-                    } else {
-                        prevPostLink.style.visibility = 'hidden';
-                    }
-                    
-                    // Set up next post link
-                    if (currentIndex > 0) {
+                if (currentIndex >= 0 && currentIndex < posts.length - 1) {
+                    const prevPost = posts[currentIndex + 1];
+                    prevPostLink.href = `/blog/posts/${prevPost.slug}.html`;
+                    prevPostLink.style.display = 'inline-block';
+                } else {
+                    prevPostLink.style.display = 'none';
+                }
+
+                if (currentIndex > 0) {
+                    const nextPost = posts[currentIndex - 1];
+                    nextPostLink.href = `/blog/posts/${nextPost.slug}.html`;
+                    nextPostLink.style.display = 'inline-block';
+                } else {
+                    nextPostLink.style.display = 'none';
+                }
                         const nextPost = posts[currentIndex - 1];
                         nextPostLink.href = `/blog/posts/${nextPost.slug}.html`;
                         nextPostLink.title = nextPost.title;

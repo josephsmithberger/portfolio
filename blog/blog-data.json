@@ -7,7 +7,10 @@
       "date": "March 17, 2025",
       "thumbnail": "/blog/assets/first-post-thumb.jpg",
       "excerpt": "Hi! I decided to add a blog to my site just for fun! this first post is just to check if everything is working.",
-      "tags": ["personal", "announcement"]
+      "tags": [
+        "personal",
+        "announcement"
+      ]
     },
     {
       "id": 2,
@@ -15,8 +18,25 @@
       "title": "My Second Ever Game Jam!",
       "date": "June 30, 2025",
       "thumbnail": "/blog/assets/jam_thumb.jpg",
-  "excerpt": "How I made Rollbit for the Xogot game jam!",
-      "tags": ["game jam", "devlog", "xogot"]
+      "excerpt": "How I made Rollbit for the Xogot game jam!",
+      "tags": [
+        "game jam",
+        "devlog",
+        "xogot"
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "media-excited-2026",
+      "title": "Media I’m excited to experience in 2026",
+      "date": "January 28, 2026",
+      "thumbnail": "/blog/assets/media_thumb.webp",
+      "excerpt": "I am an avid enjoyer of many forms of media; music, movies, shows, video games, etc.",
+      "tags": [
+        "media",
+        "2026",
+        "personal"
+      ]
     }
   ]
 }
