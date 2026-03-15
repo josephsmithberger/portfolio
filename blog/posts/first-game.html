@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A look back on Mind Garden | Joseph Smithberger</title>
+    <meta name="description" content="A look back on the development of Mind Garden, including milestones, fun facts, and early screenshots." />
+    <meta property="og:title" content="A look back on Mind Garden" />
+    <meta property="og:description" content="A look back on development, some fun facts, early screenshots, and scans of the original drawings!" />
+    <meta property="og:image" content="/blog/assets/mind_garden/present_day.jpg" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/blog/blog-styles.css" />
+    <style>
+        .media-frame {
+            background: linear-gradient(160deg, rgba(170, 144, 106, 0.16), rgba(125, 152, 109, 0.16));
+            border: 1px solid rgba(170, 144, 106, 0.35);
+            border-radius: 16px;
+            padding: 0.9rem;
+            margin: 1.4rem 0;
+            box-shadow: 0 14px 26px rgba(0, 0, 0, 0.08);
+        }
+
+        .responsive-video {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #101010;
+        }
+
+        .responsive-video iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .carousel {
+            margin: 1.8rem 0;
+            border: 1px solid rgba(170, 144, 106, 0.35);
+            border-radius: 18px;
+            overflow: hidden;
+            background: linear-gradient(165deg, rgba(255, 248, 236, 0.9), rgba(249, 242, 227, 0.95));
+            box-shadow: 0 18px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        .carousel-stage {
+            position: relative;
+            min-height: 320px;
+            background: #161616;
+        }
+
+        .carousel-slide {
+            display: none;
+            margin: 0;
+        }
+
+        .carousel-slide.active {
+            display: block;
+            animation: fadeIn 240ms ease-out;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .carousel-slide figcaption {
+            margin: 0;
+            padding: 1rem 1.1rem;
+            color: #2a2f1a;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            background: rgba(255, 255, 255, 0.9);
+            border-top: 1px solid rgba(170, 144, 106, 0.25);
+        }
+
+        .carousel-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 0.85rem 0.9rem 1rem;
+            background: rgba(255, 255, 255, 0.85);
+        }
+
+        .carousel-btn {
+            border: 1px solid rgba(120, 92, 56, 0.4);
+            background: #f7f1e3;
+            color: #3a2f1b;
+            border-radius: 999px;
+            width: 2.25rem;
+            height: 2.25rem;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .carousel-btn:hover {
+            background: #eadfc8;
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .carousel-dot {
+            width: 0.6rem;
+            height: 0.6rem;
+            border-radius: 999px;
+            border: 0;
+            background: rgba(90, 77, 46, 0.35);
+            cursor: pointer;
+        }
+
+        .carousel-dot.active {
+            background: #5a4d2e;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0.65; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 640px) {
+            .carousel-stage {
+                min-height: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">joseph~</a>
+            <ul class="nav-links">
+                <li><a href="/">home</a></li>
+                <li><a href="/#about">about</a></li>
+                <li><a href="/#projects">projects</a></li>
+                <li><a href="/blog" class="active">blog</a></li>
+                <li><a href="/#socials">socials</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="blog-post-container">
+        <header class="blog-post-header">
+            <a href="/blog" class="blog-link"><i class="fas fa-arrow-left"></i> back to all posts</a>
+            <h1>A look back on Mind Garden</h1>
+            <div class="blog-post-meta">
+                <span class="blog-date">March 15, 2026</span> •
+                <span class="blog-tags">mind garden, devlog, personal</span>
+            </div>
+        </header>
+
+        <article class="blog-post-content">
+            <p>I’m finally releasing my game - <a href="https://store.steampowered.com/app/3045100/Mind_Garden/" target="_blank" rel="noopener noreferrer"><em>Mind Garden</em></a> on March 18th! Here's a look back on development, some fun facts, early screenshots, and scans of the original drawings!</p>
+
+            <h2>Timeline</h2>
+
+            <h3>The Exposition</h3>
+            <p>It was my freshman year of highschool (2023). I wasn't making any friends and was alone most of the time. That wasn't anything new for me. I've had periods with alot friends, and periods without. The way I deal with it - or really any hardship - is to create. Looking back, I should've been excited. Like, "This sucks but what am I gonna create this time?"</p>
+            <p>As time went on, I became more depressed but also more thirsty to create. It almost became a problem. I knew I wanted to build a video game - I saw it as a fusion of my talents - but I was having trouble finding and learning the right tools. 2 games in particular really inspired me:</p>
+
+            <div class="media-frame">
+                <div class="responsive-video" style="padding-top: 29.4%;">
+                    <iframe src="https://store.steampowered.com/widget/813230/" allowfullscreen title="Animal Well Steam Widget"></iframe>
+                </div>
+            </div>
+            <ul>
+                <li>I think <em>Animal Well</em> was the first indie game I was excited for. I'd played Stardew Valley before but I wasn't actively seeking out indies. Something about this game intrigued me. This game is 10/10, highly recommend.</li>
+            </ul>
+
+            <div class="media-frame">
+                <div class="responsive-video" style="padding-top: 29.4%;">
+                    <iframe src="https://store.steampowered.com/widget/2535670/" allowfullscreen title="Second inspiration Steam Widget"></iframe>
+                </div>
+            </div>
+            <ul>
+                <li>Another indie game that I happened to come across in a YouTube video. The hand drawn artstyle and simple gameplay really stuck with me.</li>
+            </ul>
+
+            <p>I was at the point where I was getting more depressed because everytime I wanted to create, I was held back by not knowing how to code in a particular language, use the game engine ui, etc. Then, out of the heavens, decended Brackeys.</p>
+            <p><a href="https://www.youtube.com/watch?v=LOhfqjmasi0&amp;t=3209s" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=LOhfqjmasi0&amp;t=3209s</a> -</p>
+            <div class="media-frame">
+                <div class="responsive-video">
+                    <iframe src="https://www.youtube.com/embed/LOhfqjmasi0?start=3209" title="Brackeys tutorial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            <p>This wonderful tutorial dropped and I watched it beginning to end. Not only did I learn the basics, but I was excited to get started! Godot kind of <em>clicked</em> with this tutorial.</p>
+
+            <blockquote>
+                <p>Fun Fact: <br>
+                I didn't originally plan on using Godot! It was an option, but I was more inclined towards Unity. <br>
+                After the tutorial, I was sold on Godot. And it's become a big part of my life. I'm now a fan of OSS because of Godot. I also work on a port of Godot to Apple devices. Called <a href="https://xogot.com" target="_blank" rel="noopener noreferrer">Xogot</a>!</p>
+            </blockquote>
+
+            <p>I started development in late March - Early April (2024). That's almost 2 years ago!</p>
+
+            <blockquote>
+                <p>Note:<br>
+                2 years seems like ample time to create a full game (maybe 3 or 4 hours), right? Well.. maybe. I was hoping <em>Mind Garden</em> to have a few more quests and be drawn out a little longer. I fell short of that due to a variety of reasons. As a beginner, I made alot of mistakes which made the game hard to build off of.In total, the game might take you an hour to complete.</p>
+            </blockquote>
+
+            <h3>Mid Development</h3>
+            <p>This was where alot of inconsistent development happened. I'm a student, so there was alot of on and off. Let me take you through a few highlights, though.</p>
+            <ul>
+                <li>Learned to give variables proper names/style. Became confusing after awhile</li>
+                <li>Learned what Git is. Lost tons of progress when I corrupted my project.</li>
+                <li>Discovered <a href="https://www.youtube.com/@nocapsbb" target="_blank" rel="noopener noreferrer">nocaps</a>. A cool indie game channel with a really nice community.</li>
+                <li>Made a friend at school!</li>
+                <li>O'pa died</li>
+                <li>Joined Steam Next Fest and got +300 wishlists</li>
+                <li>Finally settled on a narrative for the game</li>
+                <li>Upgraded my M1 Macbook Air to a M5 Pro - much needed for the ram alone.</li>
+                <li>Got hired for my first job! I get to work on documentation and tutorials for <a href="https://xogot.com" target="_blank" rel="noopener noreferrer">Xogot</a></li>
+            </ul>
+            <p>As life tends to, alot of stuff happened. Good and bad. I'm forgetting and omitting alot, but all of it was imbued into <em>Mind Garden</em>.</p>
+
+            <section class="carousel" aria-label="Mid-development photo carousel">
+                <div class="carousel-stage">
+                    <figure class="carousel-slide active">
+                        <img src="/blog/assets/mind_garden/mid1.jpg" alt="Early Mind Garden screenshot with 4:3 border" loading="lazy">
+                        <figcaption>For some reason, I started the game intent on a 4:3 aspect ratio and border.</figcaption>
+                    </figure>
+                    <figure class="carousel-slide">
+                        <img src="/blog/assets/mind_garden/mid2.jpg" alt="Early Mind Garden screenshot with bare ground and changed sky" loading="lazy">
+                        <figcaption>The ground looks pretty bare and sky looks very different.</figcaption>
+                    </figure>
+                    <figure class="carousel-slide">
+                        <img src="/blog/assets/mind_garden/mid3.jpg" alt="Early Mind Garden screenshot with the journal" loading="lazy">
+                        <figcaption>Still had the journal!</figcaption>
+                    </figure>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn" type="button" data-dir="-1" aria-label="Previous image">&#10094;</button>
+                    <div class="carousel-dots" aria-hidden="true">
+                        <button class="carousel-dot active" type="button" data-index="0"></button>
+                        <button class="carousel-dot" type="button" data-index="1"></button>
+                        <button class="carousel-dot" type="button" data-index="2"></button>
+                    </div>
+                    <button class="carousel-btn" type="button" data-dir="1" aria-label="Next image">&#10095;</button>
+                </div>
+            </section>
+
+            <h3>Present Day</h3>
+            <p>If I'm being honest, I could've gotten this game out in October. But I was really busy with school. It wasn't until a few days ago that, seemingly out of nowhere, I picked the game back up and finished it up. It was precipitated by my best friend's Dad dying. He was a big supporter of me and my game. As a result, a portion of proceeds from my <a href="https://www.humblebundle.com/store/mind-garden" target="_blank" rel="noopener noreferrer">Humble Storefront</a> will go to <a href="https://www.stopsarcoidosis.org" target="_blank" rel="noopener noreferrer">Foundation for Sarcoidosis Research</a> in honor of him.</p>
+            <p><img src="/blog/assets/mind_garden/present_day.jpg" alt="One of the latest screenshots"></p>
+
+            <h2>Conclusion</h2>
+            <p>Thank you for being on this journey with me! I'm excited to have the game out. Go play now!</p>
+
+            <div class="media-frame">
+                <div class="responsive-video" style="padding-top: 29.4%;">
+                    <iframe src="https://store.steampowered.com/widget/3045100/" allowfullscreen title="Mind Garden Steam Widget"></iframe>
+                </div>
+            </div>
+        </article>
+
+        <div class="blog-nav">
+            <a href="#" class="blog-nav-link prev-post" id="prevPostLink">« previous post</a>
+            <a href="/blog" class="blog-nav-link">all posts</a>
+            <a href="#" class="blog-nav-link next-post" id="nextPostLink">next post »</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-text">
+                <p>Thanks for reading!</p>
+                <p class="copyright">© 2025 Joseph Smithberger</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileMenu && navLinks) {
+            mobileMenu.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            document.querySelectorAll('.nav-links a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+        }
+
+        // Mid-development image carousel
+        (() => {
+            const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+            const dots = Array.from(document.querySelectorAll('.carousel-dot'));
+            const prevBtn = document.querySelector('.carousel-btn[data-dir="-1"]');
+            const nextBtn = document.querySelector('.carousel-btn[data-dir="1"]');
+
+            if (!slides.length || !prevBtn || !nextBtn) return;
+
+            let currentIndex = 0;
+
+            const showSlide = (index) => {
+                currentIndex = (index + slides.length) % slides.length;
+                slides.forEach((slide, i) => slide.classList.toggle('active', i === currentIndex));
+                dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+            };
+
+            prevBtn.addEventListener('click', () => showSlide(currentIndex - 1));
+            nextBtn.addEventListener('click', () => showSlide(currentIndex + 1));
+            dots.forEach((dot) => {
+                dot.addEventListener('click', () => {
+                    const index = Number(dot.dataset.index);
+                    if (!Number.isNaN(index)) showSlide(index);
+                });
+            });
+        })();
+
+        // Prev/Next navigation (derive slug from URL)
+        document.addEventListener('DOMContentLoaded', async () => {
+            const currentPath = window.location.pathname;
+            const currentSlug = currentPath.split('/').pop().replace('.html', '');
+
+            try {
+                const response = await fetch('/blog/blog-data.json');
+                if (!response.ok) throw new Error('Failed to fetch blog data');
+                const data = await response.json();
+                const posts = data.posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+                const currentIndex = posts.findIndex((p) => p.slug === currentSlug);
+                const prevPostLink = document.getElementById('prevPostLink');
+                const nextPostLink = document.getElementById('nextPostLink');
+
+                if (currentIndex >= 0 && currentIndex < posts.length - 1) {
+                    const prevPost = posts[currentIndex + 1];
+                    prevPostLink.href = `/blog/posts/${prevPost.slug}.html`;
+                    prevPostLink.style.display = 'inline-block';
+                } else if (prevPostLink) {
+                    prevPostLink.style.display = 'none';
+                }
+
+                if (currentIndex > 0) {
+                    const nextPost = posts[currentIndex - 1];
+                    nextPostLink.href = `/blog/posts/${nextPost.slug}.html`;
+                    nextPostLink.style.display = 'inline-block';
+                } else if (nextPostLink) {
+                    nextPostLink.style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Failed to load post navigation:', error);
+                document.querySelectorAll('.prev-post, .next-post').forEach((link) => {
+                    link.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
