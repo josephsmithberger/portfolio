@@ -214,6 +214,19 @@
     padding-top: 5rem;
 }
 
+.blog-posts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    align-items: start;
+}
+
+.blog-list-page .blog-card {
+    width: 100%;
+    max-width: 100%;
+}
+
 .blog-list-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -309,6 +322,11 @@
     }
     
     .blog-list-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .blog-posts-container {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
