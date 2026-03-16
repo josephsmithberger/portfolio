@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Playlist | Joseph Smithberger</title>
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate">
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f5f0e8;
+            --panel: rgba(255, 255, 255, 0.88);
+            --primary: #4a6741;
+            --text: #2f2f2f;
+            --danger: #b54242;
+            --ok: #2e6f4d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        main {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 24px;
+            border: 1px solid rgba(74, 103, 65, 0.25);
+            border-radius: 18px;
+            background: var(--panel);
+        }
+
+        h1 {
+            font-family: 'Reenie Beanie', cursive;
+            font-size: clamp(3rem, 7vw, 4.8rem);
+            color: var(--primary);
+            margin-bottom: 14px;
+        }
+
+        .playlist-embed {
+            margin-bottom: 20px;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .playlist-embed iframe {
+            display: block;
+            width: 100%;
+            max-width: 660px;
+            margin: 0 auto;
+            background: transparent;
+        }
+
+        form {
+            margin-top: 12px;
+        }
+
+        .word-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .word-grid input {
+            width: 100%;
+            padding: 10px 8px;
+            border: 1px solid rgba(74, 103, 65, 0.45);
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1rem;
+            text-transform: lowercase;
+            background: #fff;
+        }
+
+        button {
+            margin-top: 12px;
+            padding: 10px 16px;
+            border: 0;
+            border-radius: 999px;
+            background: var(--primary);
+            color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        #status {
+            margin-top: 10px;
+            min-height: 1.4em;
+            color: var(--danger);
+            font-size: 0.95rem;
+        }
+
+        #hint {
+            margin-top: 12px;
+            color: var(--ok);
+            font-size: 1rem;
+            font-weight: 600;
+            display: none;
+        }
+
+        @media (max-width: 620px) {
+            .word-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>my playlist</h1>
+
+        <div class="playlist-embed">
+            <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/mind-garden/pl.u-mJy88DRIz2gpq5k"></iframe>
+        </div>
+
+        <form id="phrase-form" autocomplete="off">
+            <div class="word-grid">
+                <input id="w1" type="text" maxlength="20" aria-label="word one" required>
+                <input id="w2" type="text" maxlength="20" aria-label="word two" required>
+                <input id="w3" type="text" maxlength="20" aria-label="word three" required>
+                <input id="w4" type="text" maxlength="20" aria-label="word four" required>
+            </div>
+            <button type="submit">check phrase</button>
+            <p id="status" aria-live="polite"></p>
+            <p id="hint" aria-live="polite">congrats, you got it here's your final hint: "it's ok if its your name though."</p>
+        </form>
+    </main>
+
+    <script>
+        const form = document.getElementById('phrase-form');
+        const statusEl = document.getElementById('status');
+        const hintEl = document.getElementById('hint');
+        const wordInputs = ['w1', 'w2', 'w3', 'w4'].map((id) => document.getElementById(id));
+
+        const salt = 'mindgarden-2026-salt-v1';
+        const targetHash = 'b6f3425b1a7f9b25ace68276d16f22cf1c8ef09b14594df31f9ebd582338abcd';
+
+        async function sha256Hex(value) {
+            const bytes = new TextEncoder().encode(value);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', bytes);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        wordInputs.forEach((input, index) => {
+            input.addEventListener('keydown', (event) => {
+                if (event.key === ' ' && input.value.trim().length > 0) {
+                    event.preventDefault();
+                    const next = wordInputs[index + 1];
+                    if (next) {
+                        next.focus();
+                    }
+                }
+
+                if (event.key === 'Backspace' && input.value.length === 0) {
+                    const prev = wordInputs[index - 1];
+                    if (prev) {
+                        prev.focus();
+                    }
+                }
+            });
+        });
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const words = ['w1', 'w2', 'w3', 'w4'].map((id) => {
+                const value = document.getElementById(id).value;
+                return value.trim().toLowerCase();
+            });
+
+            if (words.some((word) => word.length === 0)) {
+                statusEl.textContent = 'enter all 4 words.';
+                hintEl.style.display = 'none';
+                return;
+            }
+
+            const joined = words.join(' ');
+            const computed = await sha256Hex(joined + '::' + salt);
+
+            if (computed === targetHash) {
+                statusEl.textContent = '';
+                hintEl.style.display = 'block';
+                return;
+            }
+
+            statusEl.textContent = 'not quite, try again.';
+            hintEl.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
